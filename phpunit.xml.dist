@@ -12,8 +12,8 @@
          bootstrap="./tests/autoload.php">
 
     <testsuites>
-        <testsuite name="Geodesics">
-            <directory>./tests/</directory>
+        <testsuite name="ParserExpressions">
+            <directory>./tests/ParserExpressions/</directory>
         </testsuite>
     </testsuites>
 
