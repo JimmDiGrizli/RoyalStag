@@ -1,17 +1,37 @@
 <?php
 namespace GetSky\ParserExpressions;
 
+/**
+ * It is a wrapper for parsing string.
+ *
+ * @package GetSky\ParserExpressions
+ */
 class Context
 {
+    /**
+     * @var string Parsing string.
+     */
     protected $string;
 
+    /**
+     * @var int The number of the current position.
+     */
     protected $cursor = 0;
 
+    /**
+     * @param $string string Parsing string
+     */
     public function __construct($string)
     {
         $this->string = $string;
     }
 
+    /**
+     * Returns the characters from the current position with the given $size.
+     *
+     * @param int $size
+     * @return bool|string
+     */
     public function value($size = 1)
     {
         if ($this->cursor + $size > strlen($this->string)) {
@@ -22,6 +42,12 @@ class Context
         return $value;
     }
 
+    /**
+     * Sets a new value for the cursor.
+     *
+     * @param int $position
+     * @throws \Exception
+     */
     public function setCursor($position)
     {
         if ($position < 0) {
@@ -30,8 +56,14 @@ class Context
         $this->cursor = $position;
     }
 
+    /**
+     * Returns the current value of the cursor.
+     *
+     * @return int
+     */
     public function getCursor()
     {
         return $this->cursor;
     }
 }
+
