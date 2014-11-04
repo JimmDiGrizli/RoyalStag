@@ -51,7 +51,7 @@ class Context
     public function setCursor($position)
     {
         if ($position < 0) {
-            throw new \Exception('Cursor i');
+            throw new \Exception('The cursor can\'t be negative.');
         }
         $this->cursor = $position;
     }
