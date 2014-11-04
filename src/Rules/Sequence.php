@@ -31,7 +31,6 @@ class Sequence implements Rule
      * satisfied, then rolls back the cursor to initial position.
      *
      * @param Context $context
-     * @throws \Exception
      */
     public function scan(Context $context)
     {
