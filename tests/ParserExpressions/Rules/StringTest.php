@@ -3,7 +3,7 @@ use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
 
-class SequenceTest extends PHPUnit_Framework_TestCase
+class StringTest extends PHPUnit_Framework_TestCase
 {
 
     public function testInterface()
@@ -17,18 +17,18 @@ class SequenceTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerRule
      */
-    public function testCreateContext($rules)
+    public function testCreateContext($rule)
     {
-        $test = new Sequence($rules);
-        $rule = $this->getAccessibleProperty(Sequence::class, 'rules');
+        $test = new String($rule);
+        $attribute = $this->getAccessibleProperty(String::class, 'rule');
 
-        $this->assertSame($rules, $rule->getValue($test));
+        $this->assertSame($rule, $attribute->getValue($test));
     }
 
     public function testScan()
     {
         $mock = $this->getObject();
-        $rule = $this->getAccessibleProperty(Sequence::class, 'rules');
+        $rule = $this->getAccessibleProperty(String::class, 'rule');
 
         $context = $this->getMockBuilder(Context::class)
             ->setMethods(['value', 'getCursor', 'setCursor'])
@@ -37,25 +37,21 @@ class SequenceTest extends PHPUnit_Framework_TestCase
 
         $context
             ->expects($this->exactly(2))
+            ->method('value')
+            ->will($this->onConsecutiveCalls('My', 'Test'));
+        $context
+            ->expects($this->exactly(2))
             ->method('getCursor')
             ->will($this->returnValue(1));
         $context
             ->expects($this->exactly(1))
             ->method('setCursor');
 
-        $subrule = $this->getMockBuilder(String::class)
-            ->setMethods(['scan'])
-            ->disableOriginalConstructor()
-            ->getMock();
-        $subrule->expects($this->exactly(4))
-            ->method('scan')
-            ->will($this->onConsecutiveCalls(true, true, true, false));
-
-        $rule->setValue($mock, [$subrule, $subrule]);
+        $rule->setValue($mock, 'My');
 
         $mock->scan($context);
 
-        $rule->setValue($mock, [$subrule, $subrule, $subrule]);
+        $rule->setValue($mock, 'Mi');
 
         $mock->scan($context);
     }
@@ -63,15 +59,15 @@ class SequenceTest extends PHPUnit_Framework_TestCase
     public function providerRule()
     {
         return [
-            [['r', 'u', 'le', 's']],
-            [['t', 'e', 's', 't']],
-            [['seq', 'ue', 'nce']]
+            ['test'],
+            ['put'],
+            ['scan']
         ];
     }
 
     private function getObject()
     {
-        return $this->getMockBuilder(Sequence::class)
+        return $this->getMockBuilder(String::class)
             ->setMethods(null)
             ->disableOriginalConstructor()
             ->getMock();

@@ -14,7 +14,7 @@ class Sequence implements Rule
 {
 
     /**
-     * @var array Array with subrules
+     * @var \GetSky\ParserExpressions\Rule[] Array with subrules
      */
     protected $rules;
 
@@ -31,17 +31,19 @@ class Sequence implements Rule
      * satisfied, then rolls back the cursor to initial position.
      *
      * @param Context $context
+     * @return boolean
      */
     public function scan(Context $context)
     {
         $index = $context->getCursor();
 
         foreach ($this->rules as $rule) {
-            $string = $context->value(strlen($rule));
-            if ($string !== $rule) {
+            if (!$rule->scan($context)) {
                 $context->setCursor($index);
-                break;
+                return false;
             }
         }
+
+        return true;
     }
 }

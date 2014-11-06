@@ -7,5 +7,10 @@ namespace GetSky\ParserExpressions;
  * @package GetSky\ParserExpressions
  */
 interface Rule {
+
+    /**
+     * @param Context $context
+     * @return boolean
+     */
     public function scan(Context $context);
 }
