@@ -35,18 +35,13 @@ class Sequence implements Rule
     public function scan(Context $context)
     {
         $index = $context->getCursor();
-        $error = false;
 
         foreach ($this->rules as $rule) {
             $string = $context->value(strlen($rule));
             if ($string !== $rule) {
-                $error = true;
+                $context->setCursor($index);
                 break;
             }
-        }
-
-        if ($error !== false) {
-            $context->setCursor($index);
         }
     }
 }
