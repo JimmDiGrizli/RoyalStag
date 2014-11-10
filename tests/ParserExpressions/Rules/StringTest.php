@@ -17,7 +17,7 @@ class StringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerRule
      */
-    public function testCreateContext($rule)
+    public function testCreateString($rule)
     {
         $test = new String($rule);
         $attribute = $this->getAccessibleProperty(String::class, 'rule');

@@ -1,20 +1,23 @@
 <?php
 
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Rules\FirstOf;
 use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
 
 require_once '../vendor/autoload.php';
 
-$context = new Context('My first parse!');
+$context = new Context('We first parse!');
 
 $rule = new Sequence(
     [
         new Sequence(
-            [
-                new String('My'),
+            array(
+                new FirstOf(
+                    [new String('My'), new String('You'), new String('We')]
+                ),
                 new String(' ')
-            ]
+            )
         ),
         new Sequence(
             [

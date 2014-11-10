@@ -1,9 +1,10 @@
 <?php
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Rules\FirstOf;
 use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
 
-class SequenceTest extends PHPUnit_Framework_TestCase
+class FirstOfTest extends PHPUnit_Framework_TestCase
 {
 
     public function testInterface()
@@ -17,10 +18,10 @@ class SequenceTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerRule
      */
-    public function testCreateSequence($rules)
+    public function testCreateFirstOf($rules)
     {
-        $test = new Sequence($rules);
-        $rule = $this->getAccessibleProperty(Sequence::class, 'rules');
+        $test = new FirstOf($rules);
+        $rule = $this->getAccessibleProperty(FirstOf::class, 'rules');
 
         $this->assertSame($rules, $rule->getValue($test));
     }
@@ -28,7 +29,7 @@ class SequenceTest extends PHPUnit_Framework_TestCase
     public function testScan()
     {
         $mock = $this->getObject();
-        $rule = $this->getAccessibleProperty(Sequence::class, 'rules');
+        $rule = $this->getAccessibleProperty(FirstOf::class, 'rules');
 
         $context = $this->getMockBuilder(Context::class)
             ->setMethods(['value', 'getCursor', 'setCursor'])
@@ -40,16 +41,16 @@ class SequenceTest extends PHPUnit_Framework_TestCase
             ->method('getCursor')
             ->will($this->returnValue(1));
         $context
-            ->expects($this->exactly(1))
+            ->expects($this->exactly(5))
             ->method('setCursor');
 
         $subrule = $this->getMockBuilder(String::class)
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();
-        $subrule->expects($this->exactly(4))
+        $subrule->expects($this->exactly(5))
             ->method('scan')
-            ->will($this->onConsecutiveCalls(true, true, true, false));
+            ->will($this->onConsecutiveCalls(false, true, false, false, false));
 
         $rule->setValue($mock, [$subrule, $subrule]);
 
@@ -69,9 +70,12 @@ class SequenceTest extends PHPUnit_Framework_TestCase
         ];
     }
 
+    /**
+     * @return PHPUnit_Framework_MockObject_MockObject
+     */
     private function getObject()
     {
-        return $this->getMockBuilder(Sequence::class)
+        return $this->getMockBuilder(FirstOf::class)
             ->setMethods(null)
             ->disableOriginalConstructor()
             ->getMock();
