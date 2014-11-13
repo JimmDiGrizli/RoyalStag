@@ -5,7 +5,8 @@ use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Rule;
 
 /**
- *  If the subrule does not match at least once this rule fails.
+ * Rule tries match on its subrule and always succeeds, independently of the
+ * matching success of its sub rule.
  *
  * @package GetSky\ParserExpressions\Rules
  */
@@ -27,7 +28,8 @@ class Optional implements Rule
 
     /**
      * Checks the rules for transmission $context.
-     *  If the subrule does not match at least once this rule fails.
+     * Rule tries match on its subrule and always succeeds,
+     * independently of the matching success of its sub rule.
      *
      * @param Context $context
      * @return boolean
