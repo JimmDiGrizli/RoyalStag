@@ -3,16 +3,19 @@
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Rules\FirstOf;
 use GetSky\ParserExpressions\Rules\OneOrMore;
+use GetSky\ParserExpressions\Rules\Optional;
 use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
 use GetSky\ParserExpressions\Rules\ZeroOrMore;
 
 require_once '../vendor/autoload.php';
 
-$context = new Context('We first parse!!');
+$context = new Context('1. We first parse!!');
 
 $rule = new Sequence(
     [
+        new Optional(new String("1. ")),
+        new Optional(new String("2. ")),
         new Sequence(
             array(
                 new ZeroOrMore(new String("!")),
