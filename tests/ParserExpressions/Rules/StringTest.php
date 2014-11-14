@@ -49,11 +49,11 @@ class StringTest extends PHPUnit_Framework_TestCase
 
         $rule->setValue($mock, 'My');
 
-        $mock->scan($context);
+        $this->assertSame(true, $mock->scan($context));
 
         $rule->setValue($mock, 'Mi');
 
-        $mock->scan($context);
+        $this->assertSame(false, $mock->scan($context));
     }
 
     public function providerRule()

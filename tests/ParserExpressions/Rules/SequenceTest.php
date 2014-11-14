@@ -53,11 +53,11 @@ class SequenceTest extends PHPUnit_Framework_TestCase
 
         $rule->setValue($mock, [$subrule, $subrule]);
 
-        $mock->scan($context);
+        $this->assertSame(true, $mock->scan($context));
 
         $rule->setValue($mock, [$subrule, $subrule, $subrule]);
 
-        $mock->scan($context);
+        $this->assertSame(false, $mock->scan($context));
     }
 
     public function providerRule()

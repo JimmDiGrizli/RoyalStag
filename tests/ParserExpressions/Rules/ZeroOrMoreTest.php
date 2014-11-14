@@ -55,9 +55,9 @@ class ZeroOrMoreTest extends PHPUnit_Framework_TestCase
 
         $rule->setValue($mock, $subrule);
 
-        $mock->scan($context);
+        $this->assertSame(true, $mock->scan($context));
 
-        $mock->scan($context);
+        $this->assertSame(true, $mock->scan($context));
     }
 
     private function getObject()
