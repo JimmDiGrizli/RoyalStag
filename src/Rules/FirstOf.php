@@ -5,8 +5,12 @@ use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Rule;
 
 /**
- * This rule is triggered at the first match.
- *
+ * This rule is triggered at the first match.The choice operator e1 / e2 
+ * first invokes e1, and if e1 succeeds, returns its result immediately. 
+ * Otherwise, if e1 fails, then the choice operator backtracks to the 
+ * original input position at which it invoked e1, but then calls e2 
+ * instead, returning e2's result.
+ * 
  * @package GetSky\ParserExpressions\Rules
  */
 class FirstOf implements Rule
@@ -26,8 +30,7 @@ class FirstOf implements Rule
     }
 
     /**
-     * Checks the rules for transmission $context. If at all rules is not
-     * satisfied, then rolls back the cursor to initial position.
+     * Checks the rules for transmission $context.
      *
      * @param Context $context
      * @return boolean
