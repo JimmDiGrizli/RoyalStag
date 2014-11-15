@@ -5,8 +5,10 @@ use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Rule;
 
 /**
- * It's rule that only succeeds if all of its subrule succeed, one after the
- * other.
+ * The sequence operator e1 e2 first invokes e1, and if e1 succeeds, 
+ * subsequently invokes e2 on the remainder of the input string leftc
+ * unconsumed by e1, and returns the result. If either e1 or e2 fails, 
+ * then the sequence expression e1 e2 fails.
  *
  * @package GetSky\ParserExpressions\Rules
  */
@@ -27,8 +29,7 @@ class Sequence implements Rule
     }
 
     /**
-     * Checks the rules for transmission $context. If at least one rule is not
-     * satisfied, then rolls back the cursor to initial position.
+     * Checks the rules for transmission $context.
      *
      * @param Context $context
      * @return boolean
