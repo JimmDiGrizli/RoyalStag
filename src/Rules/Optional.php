@@ -5,8 +5,8 @@ use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Rule;
 
 /**
- * Rule tries match on its subrule and always succeeds, independently of the
- * matching success of its sub rule.
+ * The optional operators consume zero or one consecutive 
+ * repetitions of their sub-expression e. 
  *
  * @package GetSky\ParserExpressions\Rules
  */
@@ -28,8 +28,6 @@ class Optional implements Rule
 
     /**
      * Checks the rules for transmission $context.
-     * Rule tries match on its subrule and always succeeds,
-     * independently of the matching success of its sub rule.
      *
      * @param Context $context
      * @return boolean
