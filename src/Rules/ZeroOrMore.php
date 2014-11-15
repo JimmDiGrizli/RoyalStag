@@ -5,7 +5,10 @@ use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Rule;
 
 /**
- * Succeeds always, even if the subrule doesn't match even once.
+ * The zero-or-more operators consume zero or more consecutive 
+ * repetitions of their sub-expression e. These operators always 
+ * behave greedily, consuming as much input as possible and never 
+ * backtracking. 
  *
  * @package GetSky\ParserExpressions\Rules
  */
@@ -27,8 +30,7 @@ class ZeroOrMore implements Rule
 
     /**
      * Checks the rules for transmission $context.
-     * Succeeds always, even if the subrule doesn't match even once.
-     *
+     * 
      * @param Context $context
      * @return boolean
      */
