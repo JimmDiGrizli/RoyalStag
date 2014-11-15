@@ -5,7 +5,8 @@ use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Rule;
 
 /**
- *  If the subrule does not match at least once this rule fails.
+ * The one-or-more operators consume one or more consecutive 
+ * repetitions of their sub-expression e. 
  *
  * @package GetSky\ParserExpressions\Rules
  */
@@ -27,7 +28,6 @@ class OneOrMore implements Rule
 
     /**
      * Checks the rules for transmission $context.
-     *  If the subrule does not match at least once this rule fails.
      *
      * @param Context $context
      * @return boolean
