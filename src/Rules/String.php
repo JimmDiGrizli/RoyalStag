@@ -12,6 +12,9 @@ use GetSky\ParserExpressions\Rule;
 class String implements Rule
 {
 
+    /**
+     * @var string
+     */
     protected $rule;
 
     /**

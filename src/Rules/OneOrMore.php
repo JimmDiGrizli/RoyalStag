@@ -14,7 +14,7 @@ class OneOrMore implements Rule
 {
 
     /**
-     * @var \GetSky\ParserExpressions\Rule[] Array with subrules
+     * @var \GetSky\ParserExpressions\Rule
      */
     protected $rule;
 
