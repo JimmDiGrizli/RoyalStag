@@ -17,12 +17,14 @@ class StringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerRule
      */
-    public function testCreateString($rule)
+    public function testCreateString($rule, $name)
     {
-        $test = new String($rule);
+        $test = new String($rule, $name);
         $attribute = $this->getAccessibleProperty(String::class, 'rule');
+        $fName = $this->getAccessibleProperty(String::class, 'name');
 
         $this->assertSame($rule, $attribute->getValue($test));
+        $this->assertSame($name, $fName->getValue($test));
     }
 
     public function testScan()
@@ -59,9 +61,9 @@ class StringTest extends PHPUnit_Framework_TestCase
     public function providerRule()
     {
         return [
-            ['test'],
-            ['put'],
-            ['scan']
+            ['test', 'Test'],
+            ['put', 'Test2'],
+            ['scan', 'Test3']
         ];
     }
 

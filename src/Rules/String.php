@@ -18,12 +18,28 @@ class String implements Rule
     protected $rule;
 
     /**
-     * @param string $rule String rule
+     * @var string
      */
-    public function __construct($rule)
+    protected $name;
+
+    /**
+     * @param string $rule String rule
+     * @param string $name
+     */
+    public function __construct($rule, $name = "String")
     {
         $this->rule = (string) $rule;
+        $this->name = (string) $name;
     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
 
     /**
      * Checks the string for transmission $context.

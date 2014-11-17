@@ -22,10 +22,13 @@ class OptionalTest extends PHPUnit_Framework_TestCase
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();
-        $test = new Optional($rule);
+        $name = "Zero";
+        $test = new Optional($rule, $name);
         $attribute = $this->getAccessibleProperty(Optional::class, 'rule');
+        $fName = $this->getAccessibleProperty(Optional::class, 'name');
 
         $this->assertSame($rule, $attribute->getValue($test));
+        $this->assertSame($name, $fName->getValue($test));
     }
 
     public function testScan()

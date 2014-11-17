@@ -22,11 +22,26 @@ class FirstOf implements Rule
     protected $rules;
 
     /**
-     * @param array $rules Array with subrules
+     * @var string
      */
-    public function __construct(array $rules)
+    protected $name;
+
+    /**
+     * @param array $rules Array with subrules
+     * @param string $name Name of rule
+     */
+    public function __construct(array $rules, $name = "FirstOf")
     {
         $this->rules = $rules;
+        $this->name = (string) $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**

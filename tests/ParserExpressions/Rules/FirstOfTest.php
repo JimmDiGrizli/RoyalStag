@@ -18,12 +18,14 @@ class FirstOfTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerRule
      */
-    public function testCreateFirstOf($rules)
+    public function testCreateFirstOf($rules, $name)
     {
-        $test = new FirstOf($rules);
-        $rule = $this->getAccessibleProperty(FirstOf::class, 'rules');
+        $test = new FirstOf($rules, $name);
+        $fRule = $this->getAccessibleProperty(FirstOf::class, 'rules');
+        $fName = $this->getAccessibleProperty(FirstOf::class, 'name');
 
-        $this->assertSame($rules, $rule->getValue($test));
+        $this->assertSame($rules, $fRule->getValue($test));
+        $this->assertSame($name, $fName->getValue($test));
     }
 
     public function testScan()
@@ -64,9 +66,9 @@ class FirstOfTest extends PHPUnit_Framework_TestCase
     public function providerRule()
     {
         return [
-            [['r', 'u', 'le', 's']],
-            [['t', 'e', 's', 't']],
-            [['seq', 'ue', 'nce']]
+            [['r', 'u', 'le', 's'], "Rules"],
+            [['t', 'e', 's', 't'], "Test"],
+            [['seq', 'ue', 'nce'], "Sequence"]
         ];
     }
 

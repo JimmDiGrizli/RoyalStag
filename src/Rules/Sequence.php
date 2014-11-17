@@ -21,11 +21,26 @@ class Sequence implements Rule
     protected $rules;
 
     /**
-     * @param array $rules Array with subrules
+     * @var string
      */
-    public function __construct(array $rules)
+    protected $name;
+
+    /**
+     * @param array $rules Array with subrules
+     * @param string $name
+     */
+    public function __construct(array $rules, $name = "Sequence")
     {
         $this->rules = $rules;
+        $this->name = (string) $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**

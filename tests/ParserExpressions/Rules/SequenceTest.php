@@ -17,12 +17,14 @@ class SequenceTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerRule
      */
-    public function testCreateSequence($rules)
+    public function testCreateSequence($rules, $name)
     {
-        $test = new Sequence($rules);
-        $rule = $this->getAccessibleProperty(Sequence::class, 'rules');
+        $test = new Sequence($rules, $name);
+        $fRule = $this->getAccessibleProperty(Sequence::class, 'rules');
+        $fName = $this->getAccessibleProperty(Sequence::class, 'name');
 
-        $this->assertSame($rules, $rule->getValue($test));
+        $this->assertSame($rules, $fRule->getValue($test));
+        $this->assertSame($name, $fName->getValue($test));
     }
 
     public function testScan()
@@ -63,9 +65,9 @@ class SequenceTest extends PHPUnit_Framework_TestCase
     public function providerRule()
     {
         return [
-            [['r', 'u', 'le', 's']],
-            [['t', 'e', 's', 't']],
-            [['seq', 'ue', 'nce']]
+            [['r', 'u', 'le', 's'], "Rule"],
+            [['t', 'e', 's', 't'], "Test"],
+            [['seq', 'ue', 'nce'], "Sequence"]
         ];
     }
 

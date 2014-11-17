@@ -22,10 +22,13 @@ class OneOrMoreTest extends PHPUnit_Framework_TestCase
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();
-        $test = new OneOrMore($rule);
+        $name = "Scan";
+        $test = new OneOrMore($rule, $name);
         $attribute = $this->getAccessibleProperty(OneOrMore::class, 'rule');
+        $fName = $this->getAccessibleProperty(OneOrMore::class, 'name');
 
         $this->assertSame($rule, $attribute->getValue($test));
+        $this->assertSame($name, $fName->getValue($test));
     }
 
     public function testScan()

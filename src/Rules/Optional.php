@@ -19,12 +19,28 @@ class Optional implements Rule
     protected $rule;
 
     /**
-     * @param Rule $rule
+     * @var string
      */
-    public function __construct(Rule $rule)
+    protected $name;
+
+    /**
+     * @param Rule $rule
+     * @param string $name
+     */
+    public function __construct(Rule $rule, $name = "Optional")
     {
         $this->rule = $rule;
+        $this->name = (string) $name;
     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
 
     /**
      * Checks the rules for transmission $context.

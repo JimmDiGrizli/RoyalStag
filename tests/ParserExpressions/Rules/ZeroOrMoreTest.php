@@ -21,10 +21,13 @@ class ZeroOrMoreTest extends PHPUnit_Framework_TestCase
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();
-        $test = new ZeroOrMore($rule);
+        $name = "ScanZeroOrMore";
+        $test = new ZeroOrMore($rule, $name);
         $attribute = $this->getAccessibleProperty(ZeroOrMore::class, 'rule');
+        $fName = $this->getAccessibleProperty(ZeroOrMore::class, 'name');
 
         $this->assertSame($rule, $attribute->getValue($test));
+        $this->assertSame($name, $fName->getValue($test));
     }
 
     public function testScan()
