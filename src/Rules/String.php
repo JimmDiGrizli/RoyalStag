@@ -25,6 +25,12 @@ class String implements Rule
         $this->rule = (string) $rule;
     }
 
+    /**
+     * Checks the string for transmission $context.
+     *
+     * @param Context $context
+     * @return boolean
+     */
     public function scan(Context $context)
     {
         $index = $context->getCursor();

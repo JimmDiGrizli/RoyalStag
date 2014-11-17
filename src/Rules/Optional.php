@@ -19,7 +19,7 @@ class Optional implements Rule
     protected $rule;
 
     /**
-     * @param Rule $rule subrule
+     * @param Rule $rule
      */
     public function __construct(Rule $rule)
     {
