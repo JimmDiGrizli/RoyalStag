@@ -6,12 +6,12 @@ use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
- * This rule is triggered at the first match.The choice operator e1 / e2 
- * first invokes e1, and if e1 succeeds, returns its result immediately. 
- * Otherwise, if e1 fails, then the choice operator backtracks to the 
- * original input position at which it invoked e1, but then calls e2 
+ * This rule is triggered at the first match.The choice operator e1 / e2
+ * first invokes e1, and if e1 succeeds, returns its result immediately.
+ * Otherwise, if e1 fails, then the choice operator backtracks to the
+ * original input position at which it invoked e1, but then calls e2
  * instead, returning e2's result.
- * 
+ *
  * @package GetSky\ParserExpressions\Rules
  */
 class FirstOf implements Rule
@@ -34,7 +34,7 @@ class FirstOf implements Rule
     public function __construct(array $rules, $name = "FirstOf")
     {
         $this->rules = $rules;
-        $this->name = (string) $name;
+        $this->name = (string)$name;
     }
 
     /**

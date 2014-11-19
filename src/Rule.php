@@ -6,8 +6,8 @@ namespace GetSky\ParserExpressions;
  *
  * @package GetSky\ParserExpressions
  */
-interface Rule {
-
+interface Rule
+{
     /**
      * @param Context $context
      * @return Result|boolean

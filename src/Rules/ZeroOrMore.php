@@ -6,10 +6,10 @@ use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
- * The zero-or-more operators consume zero or more consecutive 
- * repetitions of their sub-expression e. These operators always 
- * behave greedily, consuming as much input as possible and never 
- * backtracking. 
+ * The zero-or-more operators consume zero or more consecutive
+ * repetitions of their sub-expression e. These operators always
+ * behave greedily, consuming as much input as possible and never
+ * backtracking.
  *
  * @package GetSky\ParserExpressions\Rules
  */
@@ -33,7 +33,7 @@ class ZeroOrMore implements Rule
     public function __construct(Rule $rule, $name = "ZeroOrMore")
     {
         $this->rule = $rule;
-        $this->name = (string) $name;
+        $this->name = (string)$name;
     }
 
     /**
@@ -46,7 +46,7 @@ class ZeroOrMore implements Rule
 
     /**
      * Checks the rules for transmission $context.
-     * 
+     *
      * @param Context $context
      * @return boolean
      */
@@ -64,7 +64,7 @@ class ZeroOrMore implements Rule
 
         $context->setCursor($index);
 
-        if($firstIndex != $index) {
+        if ($firstIndex != $index) {
             $result->setValue($string, $index);
             return $result;
         }

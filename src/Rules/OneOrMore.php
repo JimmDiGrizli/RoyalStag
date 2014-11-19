@@ -6,8 +6,8 @@ use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
- * The one-or-more operators consume one or more consecutive 
- * repetitions of their sub-expression e. 
+ * The one-or-more operators consume one or more consecutive
+ * repetitions of their sub-expression e.
  *
  * @package GetSky\ParserExpressions\Rules
  */
@@ -31,7 +31,7 @@ class OneOrMore implements Rule
     public function __construct(Rule $rule, $name = "OneOrMore")
     {
         $this->rule = $rule;
-        $this->name = (string) $name;
+        $this->name = (string)$name;
     }
 
     /**
@@ -65,7 +65,7 @@ class OneOrMore implements Rule
 
         $context->setCursor($index);
 
-        if($preIndex != $index) {
+        if ($preIndex != $index) {
             $result->setValue($string, $index);
             return $result;
         }

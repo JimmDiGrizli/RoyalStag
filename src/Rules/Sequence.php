@@ -6,9 +6,9 @@ use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
- * The sequence operator e1 e2 first invokes e1, and if e1 succeeds, 
+ * The sequence operator e1 e2 first invokes e1, and if e1 succeeds,
  * subsequently invokes e2 on the remainder of the input string leftc
- * unconsumed by e1, and returns the result. If either e1 or e2 fails, 
+ * unconsumed by e1, and returns the result. If either e1 or e2 fails,
  * then the sequence expression e1 e2 fails.
  *
  * @package GetSky\ParserExpressions\Rules
@@ -33,7 +33,7 @@ class Sequence implements Rule
     public function __construct(array $rules, $name = "Sequence")
     {
         $this->rules = $rules;
-        $this->name = (string) $name;
+        $this->name = (string)$name;
     }
 
     /**
@@ -61,7 +61,7 @@ class Sequence implements Rule
             if ($value === false) {
                 $context->setCursor($index);
                 return false;
-            } else if($value instanceof Result) {
+            } elseif ($value instanceof Result) {
                 $string .= $value->getValue();
                 $result->addChild($value);
             }

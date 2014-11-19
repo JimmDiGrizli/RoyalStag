@@ -29,8 +29,8 @@ class String implements Rule
      */
     public function __construct($rule, $name = "String")
     {
-        $this->rule = (string) $rule;
-        $this->name = (string) $name;
+        $this->rule = (string)$rule;
+        $this->name = (string)$name;
     }
 
     /**

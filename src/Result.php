@@ -1,7 +1,12 @@
 <?php
-
 namespace GetSky\ParserExpressions;
 
+
+/**
+ * Result class is used to store the result of the parse/.
+ *
+ * @package GetSky\ParserExpressions
+ */
 class Result implements \Iterator
 {
 

@@ -58,10 +58,9 @@ class Optional implements Rule
         if ($value === false) {
             $context->setCursor($index);
             return true;
-        } else if ($value === true) {
+        } elseif ($value === true) {
             return true;
         }
-
 
         $result = new Result($this->name);
         $result->setValue($value->getValue(), $index);
