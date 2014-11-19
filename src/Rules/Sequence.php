@@ -2,6 +2,7 @@
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
@@ -52,14 +53,22 @@ class Sequence implements Rule
     public function scan(Context $context)
     {
         $index = $context->getCursor();
+        $string = '';
+        $result = new Result($this->name);
 
         foreach ($this->rules as $rule) {
-            if (!$rule->scan($context)) {
+            $value = $rule->scan($context);
+            if ($value === false) {
                 $context->setCursor($index);
                 return false;
+            } else if($value instanceof Result) {
+                $string .= $value->getValue();
+                $result->addChild($value);
             }
         }
 
-        return true;
+        $result->setValue($string, $index);
+
+        return $result;
     }
 }

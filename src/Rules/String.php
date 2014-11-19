@@ -2,6 +2,7 @@
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
@@ -45,7 +46,7 @@ class String implements Rule
      * Checks the string for transmission $context.
      *
      * @param Context $context
-     * @return boolean
+     * @return boolean|Result
      */
     public function scan(Context $context)
     {
@@ -58,6 +59,9 @@ class String implements Rule
             return false;
         }
 
-        return true;
+        $result = new Result($this->name);
+        $result->setValue($string, $index);
+
+        return $result;
     }
 }

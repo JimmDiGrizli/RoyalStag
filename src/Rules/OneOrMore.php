@@ -2,6 +2,7 @@
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
@@ -50,16 +51,23 @@ class OneOrMore implements Rule
      */
     public function scan(Context $context)
     {
-        $firstIndex = $index = $context->getCursor();
+        $preIndex = $index = $context->getCursor();
+        $index = $index = $context->getCursor();
 
-        while ($this->rule->scan($context)) {
+        $string = '';
+        $result = new Result($this->name);
+
+        while ($value = $this->rule->scan($context)) {
+            $result->addChild($value);
+            $string .= $value->getValue();
             $index = $context->getCursor();
         }
 
         $context->setCursor($index);
 
-        if($firstIndex != $index) {
-            return true;
+        if($preIndex != $index) {
+            $result->setValue($string, $index);
+            return $result;
         }
 
         return false;

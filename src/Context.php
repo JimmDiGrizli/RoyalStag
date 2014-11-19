@@ -18,6 +18,8 @@ class Context
      */
     protected $cursor = 0;
 
+    protected $result;
+
     /**
      * @param $string string Parsing string
      */
@@ -64,6 +66,21 @@ class Context
     public function getCursor()
     {
         return $this->cursor;
+    }
+
+    public function addResult($name, $value, $start, $end)
+    {
+
+        $this->result[][$name] = [
+            'value' => $value,
+            'start' => $start,
+            'end' => $end
+            ];
+    }
+
+    public function result()
+    {
+        return $this->result;
     }
 }
 

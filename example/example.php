@@ -36,4 +36,4 @@ $rule = new Sequence(
     ]
 );
 
-var_dump($rule->scan($context));
+print_r($rule->scan($context));

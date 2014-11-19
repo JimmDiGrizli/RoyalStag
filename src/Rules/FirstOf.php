@@ -2,6 +2,7 @@
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
@@ -55,8 +56,12 @@ class FirstOf implements Rule
         $index = $context->getCursor();
 
         foreach ($this->rules as $rule) {
-            if ($rule->scan($context)) {
-               return true;
+            $value = $rule->scan($context);
+            if ($value !== false) {
+                $result = new Result($this->name);
+                $result->addChild($value);
+                $result->setValue($value->getValue(), $index);
+                return $result;
             }
             $context->setCursor($index);
         }

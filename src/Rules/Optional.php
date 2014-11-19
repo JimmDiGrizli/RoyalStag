@@ -2,11 +2,12 @@
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
- * The optional operators consume zero or one consecutive 
- * repetitions of their sub-expression e. 
+ * The optional operators consume zero or one consecutive
+ * repetitions of their sub-expression e.
  *
  * @package GetSky\ParserExpressions\Rules
  */
@@ -30,7 +31,7 @@ class Optional implements Rule
     public function __construct(Rule $rule, $name = "Optional")
     {
         $this->rule = $rule;
-        $this->name = (string) $name;
+        $this->name = (string)$name;
     }
 
     /**
@@ -52,10 +53,20 @@ class Optional implements Rule
     {
         $index = $context->getCursor();
 
-        if(!$this->rule->scan($context)) {
+        $value = $this->rule->scan($context);
+
+        if ($value === false) {
             $context->setCursor($index);
+            return true;
+        } else if ($value === true) {
+            return true;
         }
 
-        return true;
+
+        $result = new Result($this->name);
+        $result->setValue($value->getValue(), $index);
+        $result->addChild($value);
+
+        return $result;
     }
 }

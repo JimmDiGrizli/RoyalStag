@@ -10,7 +10,7 @@ interface Rule {
 
     /**
      * @param Context $context
-     * @return boolean
+     * @return Result|boolean
      */
     public function scan(Context $context);
 }
