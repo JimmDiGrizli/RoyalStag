@@ -15,7 +15,8 @@ use GetSky\ParserExpressions\Rules\ZeroOrMore;
  * @param string $name
  * @return FirstOf
  */
-function FirstOf(array $rules, $name = "FirstOf") {
+function FirstOf(array $rules, $name = "FirstOf")
+{
     return new FirstOf($rules, $name);
 }
 
@@ -38,7 +39,8 @@ function OneOrMore(Rule $rule, $name = "OneOrMore")
  * @param string $name
  * @return Optional
  */
-function Optional(Rule $rule, $name = "Optional") {
+function Optional(Rule $rule, $name = "Optional")
+{
     return new Optional($rule, $name);
 }
 
@@ -49,7 +51,8 @@ function Optional(Rule $rule, $name = "Optional") {
  * @param string $name
  * @return Sequence
  */
-function Sequence(array $rules, $name = "Sequence") {
+function Sequence(array $rules, $name = "Sequence")
+{
     return new Sequence($rules, $name);
 }
 
@@ -60,7 +63,8 @@ function Sequence(array $rules, $name = "Sequence") {
  * @param string $name
  * @return GetSky\ParserExpressions\Rules\String
  */
-function String($string, $name = "String") {
+function String($string, $name = "String")
+{
     return new String($string, $name);
 }
 
@@ -71,7 +75,8 @@ function String($string, $name = "String") {
  * @param string $name
  * @return ZeroOrMore
  */
-function ZeroOrMore(Rule $rule, $name = "ZeroOrMore") {
+function ZeroOrMore(Rule $rule, $name = "ZeroOrMore")
+{
     return new ZeroOrMore($rule, $name);
 }
 

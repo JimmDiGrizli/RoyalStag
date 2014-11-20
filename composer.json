@@ -1,32 +1,37 @@
 {
-    "name": "getsky/parser-expressions",
-    "type": "library",
-    "description": "PEG for PHP",
-    "keywords": [ "PEG", "parser expressions", "parser", "expressions" ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "JimmDiGrizli",
-            "email": "getmansk-y@yandex.ru"
-        }
-    ],
-    "require": {
-        "php": ">=5.4"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "4.3.*",
-        "squizlabs/php_codesniffer": "1.*"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-develop": "0.9.x-dev"
-        }
-    },
-    "minimum-stability": "dev",
-    "autoload": {
-        "psr-4": {
-            "GetSky\\ParserExpressions\\": "src/"
-        },
-        "files": ["helper/functions.php"]
+  "name": "getsky/parser-expressions",
+  "type": "library",
+  "description": "PEG for PHP",
+  "keywords": [
+    "PEG",
+    "parser expressions",
+    "parser",
+    "expressions"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "JimmDiGrizli",
+      "email": "getmansk-y@yandex.ru"
     }
+  ],
+  "require": {
+    "php": ">=5.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.3.*",
+    "squizlabs/php_codesniffer": "1.*"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-develop": "0.9.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "GetSky\\ParserExpressions\\": "src/"
+    },
+    "files": ["helper/functions.php"]
+  }
 }

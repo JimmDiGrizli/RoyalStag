@@ -1,7 +1,6 @@
 <?php
 namespace GetSky\ParserExpressions;
 
-
 /**
  * Result class is used to store the result of the parse/.
  *
@@ -95,7 +94,7 @@ class Result implements \Iterator
         ];
 
         if ($this->children) {
-            foreach($this->children as $rule) {
+            foreach ($this->children as $rule) {
                 $array['children'][] = $rule->toArray();
             }
         }
