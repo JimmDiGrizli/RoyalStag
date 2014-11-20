@@ -84,4 +84,22 @@ class Result implements \Iterator
     {
         $this->key = 0;
     }
+
+    public function toArray()
+    {
+        $array = [
+            'name' => $this->name,
+            'value' => $this->value,
+            'start' => $this->start,
+            'end' => $this->end,
+        ];
+
+        if ($this->children) {
+            foreach($this->children as $rule) {
+                $array['children'][] = $rule->toArray();
+            }
+        }
+
+        return $array;
+    }
 }

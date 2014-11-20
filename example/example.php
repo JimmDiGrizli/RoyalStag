@@ -31,4 +31,4 @@ $rule = Sequence(
     ]
 );
 
-print_r($rule->scan($context));
+print_r($rule->scan($context)->toArray());
