@@ -43,6 +43,16 @@ class Context
     }
 
     /**
+     * Returns the current value of the cursor.
+     *
+     * @return int
+     */
+    public function getCursor()
+    {
+        return $this->cursor;
+    }
+
+    /**
      * Sets a new value for the cursor.
      *
      * @param int $position
@@ -54,16 +64,6 @@ class Context
             throw new \Exception('The cursor can\'t be negative.');
         }
         $this->cursor = $position;
-    }
-
-    /**
-     * Returns the current value of the cursor.
-     *
-     * @return int
-     */
-    public function getCursor()
-    {
-        return $this->cursor;
     }
 }
 

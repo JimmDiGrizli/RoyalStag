@@ -57,9 +57,11 @@ class ZeroOrMore implements Rule
         $result = new Result($this->name);
 
         while ($value = $this->rule->scan($context)) {
-            $result->addChild($value);
-            $string .= $value->getValue();
-            $index = $context->getCursor();
+            if ($value instanceof Result) {
+                $result->addChild($value);
+                $string .= $value->getValue();
+                $index = $context->getCursor();
+            }
         }
 
         $context->setCursor($index);

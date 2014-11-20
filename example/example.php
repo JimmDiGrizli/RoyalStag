@@ -1,38 +1,33 @@
 <?php
 
 use GetSky\ParserExpressions\Context;
-use GetSky\ParserExpressions\Rules\FirstOf;
-use GetSky\ParserExpressions\Rules\OneOrMore;
-use GetSky\ParserExpressions\Rules\Optional;
-use GetSky\ParserExpressions\Rules\Sequence;
-use GetSky\ParserExpressions\Rules\String;
-use GetSky\ParserExpressions\Rules\ZeroOrMore;
 
 require_once '../vendor/autoload.php';
 
 $context = new Context('1. We first parse!!');
 
-$rule = new Sequence(
+
+$rule = Sequence(
     [
-        new Optional(new String("1. ")),
-        new Optional(new String("2. ")),
-        new Sequence(
-            array(
-                new ZeroOrMore(new String("!")),
-                new FirstOf(
-                    [new String('My'), new String('You'), new String('We')]
-                ),
-                new String(' ')
-            )
-        ),
-        new Sequence(
+        Optional(String("1. ")),
+        Optional(String("2. ")),
+        Sequence(
             [
-                new String('first'),
-                new String(' ')
+                ZeroOrMore(String("!")),
+                FirstOf(
+                    [String('My'), String('You'), String('We')]
+                ),
+                String(' ')
             ]
         ),
-        new String('parse'),
-        new OneOrMore(new String("!"))
+        Sequence(
+            [
+                String('first'),
+                String(' ')
+            ]
+        ),
+        String('parse'),
+        OneOrMore(String("!"))
     ]
 );
 

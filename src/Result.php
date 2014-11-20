@@ -37,14 +37,6 @@ class Result implements \Iterator
     }
 
     /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * @param string $value
      * @param integer $start
      */
@@ -53,6 +45,14 @@ class Result implements \Iterator
         $this->value = $value;
         $this->start = $start;
         $this->end = $start + strlen($value);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     public function addChild(Result $child)

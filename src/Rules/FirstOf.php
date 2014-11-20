@@ -57,7 +57,7 @@ class FirstOf implements Rule
 
         foreach ($this->rules as $rule) {
             $value = $rule->scan($context);
-            if ($value !== false) {
+            if ($value instanceof Result) {
                 $result = new Result($this->name);
                 $result->addChild($value);
                 $result->setValue($value->getValue(), $index);
