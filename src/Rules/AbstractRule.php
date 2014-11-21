@@ -43,7 +43,7 @@ abstract class AbstractRule implements Rule
             return $rule;
         }
         if (is_array($rule)) {
-            return new Sequence([$rule]);
+            return new Sequence($rule);
         }
         return new String($rule);
     }
