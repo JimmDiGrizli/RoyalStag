@@ -3,7 +3,6 @@ namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\Rule;
 
 /**
  * This rule is triggered at the first match.The choice operator e1 / e2
@@ -14,7 +13,7 @@ use GetSky\ParserExpressions\Rule;
  *
  * @package GetSky\ParserExpressions\Rules
  */
-class FirstOf implements Rule
+class FirstOf extends AbstractRule
 {
 
     /**
@@ -33,16 +32,10 @@ class FirstOf implements Rule
      */
     public function __construct(array $rules, $name = "FirstOf")
     {
-        $this->rules = $rules;
+        foreach ($rules as $rule) {
+            $this->rules[] = $this->toRule($rule);
+        }
         $this->name = (string)$name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

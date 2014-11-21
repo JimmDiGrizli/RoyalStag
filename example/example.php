@@ -57,35 +57,12 @@ class DateParser
 
     public function digital()
     {
-        return FirstOf(
-            [
-                String(0),
-                String(1),
-                String(2),
-                String(3),
-                String(4),
-                String(5),
-                String(6),
-                String(7),
-                String(8),
-                String(9)
-            ],
-            'Digital'
-        );
+        return FirstOf([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 'Digital');
     }
 
     public function dot()
     {
-        return Optional(
-            FirstOf(
-                [
-                    String("."),
-                    String("-"),
-                    String("/")
-                ]
-            ),
-            'Dot'
-        );
+        return Optional(FirstOf(['-', '.', '/']), 'Dot');
     }
 }
 
