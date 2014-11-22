@@ -9,16 +9,34 @@ namespace GetSky\ParserExpressions;
 class Result implements \Iterator
 {
 
-    protected $key;
+    /**
+     * @var integer
+     */
+    private  $key;
 
+    /**
+     * @var integer Result string
+     */
     protected $name;
 
+    /**
+     * @var string Result string
+     */
     protected $value;
 
+    /**
+     * @var integer Start position
+     */
     protected $start;
 
+    /**
+     * @var integer Final position
+     */
     protected $end;
 
+    /**
+     * @var Result[]
+     */
     protected $children;
 
     public function __construct($name)
@@ -28,7 +46,7 @@ class Result implements \Iterator
 
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getValue()
     {
@@ -41,49 +59,73 @@ class Result implements \Iterator
      */
     public function setValue($value, $start)
     {
-        $this->value = $value;
+        $this->value = (string)$value;
         $this->start = $start;
         $this->end = $start + strlen($value);
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * Added child result
+     * @param Result $child
+     */
     public function addChild(Result $child)
     {
         $this->children[] = $child;
     }
 
+    /**
+     * @return Result
+     */
     public function current()
     {
-        $this->children[$this->key];
+        return $this->children[$this->key];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function next()
     {
         ++$this->key;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function key()
     {
         return $this->key;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function valid()
     {
         return isset($this->children[$this->key]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function rewind()
     {
         $this->key = 0;
     }
 
+    /**
+     * Outstanding results in an array.
+     *
+     * @return array
+     */
     public function toArray()
     {
         $array = [
