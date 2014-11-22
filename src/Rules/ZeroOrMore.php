@@ -13,7 +13,7 @@ use GetSky\ParserExpressions\Rule;
  *
  * @package GetSky\ParserExpressions\Rules
  */
-class ZeroOrMore implements Rule
+class ZeroOrMore extends AbstractRule
 {
 
     /**
@@ -22,26 +22,13 @@ class ZeroOrMore implements Rule
     protected $rule;
 
     /**
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * @param Rule $rule
+     * @param array|string|Rule $rule
      * @param string $name
      */
     public function __construct(Rule $rule, $name = "ZeroOrMore")
     {
-        $this->rule = $rule;
+        $this->rule = $this->toRule($rule);
         $this->name = (string)$name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

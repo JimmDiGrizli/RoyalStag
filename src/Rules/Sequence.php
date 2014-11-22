@@ -3,7 +3,6 @@ namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\Rule;
 
 /**
  * The sequence operator e1 e2 first invokes e1, and if e1 succeeds,
@@ -13,7 +12,7 @@ use GetSky\ParserExpressions\Rule;
  *
  * @package GetSky\ParserExpressions\Rules
  */
-class Sequence implements Rule
+class Sequence extends AbstractRule
 {
 
     /**
@@ -22,26 +21,15 @@ class Sequence implements Rule
     protected $rules;
 
     /**
-     * @var string
-     */
-    protected $name;
-
-    /**
      * @param array $rules Array with subrules
      * @param string $name
      */
     public function __construct(array $rules, $name = "Sequence")
     {
-        $this->rules = $rules;
+        foreach ($rules as $rule) {
+            $this->rules[] = $this->toRule($rule);
+        }
         $this->name = (string)$name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

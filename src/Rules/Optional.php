@@ -11,7 +11,7 @@ use GetSky\ParserExpressions\Rule;
  *
  * @package GetSky\ParserExpressions\Rules
  */
-class Optional implements Rule
+class Optional extends AbstractRule
 {
 
     /**
@@ -20,28 +20,14 @@ class Optional implements Rule
     protected $rule;
 
     /**
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * @param Rule $rule
+     * @param array|string|Rule $rule
      * @param string $name
      */
-    public function __construct(Rule $rule, $name = "Optional")
+    public function __construct($rule, $name = "Optional")
     {
-        $this->rule = $rule;
+        $this->rule = $this->toRule($rule);
         $this->name = (string)$name;
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
 
     /**
      * Checks the rules for transmission $context.

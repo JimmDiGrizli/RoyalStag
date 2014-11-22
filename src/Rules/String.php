@@ -3,25 +3,19 @@ namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\Rule;
 
 /**
  * It's rule that only succeeds if strings are equal.
  *
  * @package GetSky\ParserExpressions\Rules
  */
-class String implements Rule
+class String extends AbstractRule
 {
 
     /**
      * @var string
      */
     protected $rule;
-
-    /**
-     * @var string
-     */
-    protected $name;
 
     /**
      * @param string $rule String rule
@@ -32,15 +26,6 @@ class String implements Rule
         $this->rule = (string)$rule;
         $this->name = (string)$name;
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
 
     /**
      * Checks the string for transmission $context.
