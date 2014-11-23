@@ -25,7 +25,7 @@ class ZeroOrMore extends AbstractRule
      * @param array|string|Rule $rule
      * @param string $name
      */
-    public function __construct(Rule $rule, $name = "ZeroOrMore")
+    public function __construct($rule, $name = "ZeroOrMore")
     {
         $this->rule = $this->toRule($rule);
         $this->name = (string)$name;

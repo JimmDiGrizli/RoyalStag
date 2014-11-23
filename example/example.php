@@ -9,7 +9,7 @@ class DateParser
 
     public function rule()
     {
-        return Sequence([$this->year(), $this->dot(), $this->month(), $this->dot(), $this->day()]);
+        return Sequence([PredicateAnd(ZeroOrMore("0")),$this->year(), $this->dot(), $this->month(), $this->dot(), $this->day()]);
     }
 
     public function year()
@@ -61,7 +61,7 @@ class DateParser
 
 
 $parser = new DateParser();
-$context = new Context('2014-12-12');
+$context = new Context('0000000000000000002014-12-12');
 print_r($parser->rule()->scan($context)->toArray());
 
 $context = new Context('2014.01.04');
