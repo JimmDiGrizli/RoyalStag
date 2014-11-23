@@ -1,5 +1,6 @@
 <?php
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\OneOrMore;
 use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
@@ -41,10 +42,20 @@ class OneOrMoreTest extends PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
+        $result = $this->getMockBuilder(Result::class)
+            ->setMethods([])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $result
+            ->expects($this->exactly(3))
+            ->method('getValue')
+            ->will($this->returnValue(1));
+
         $context
-            ->expects($this->exactly(5))
+            ->expects($this->exactly(7))
             ->method('getCursor')
-            ->will($this->onConsecutiveCalls(1,2,3,4,1));
+            ->will($this->onConsecutiveCalls(1,1,2,3,4,1,1));
         $context
             ->expects($this->exactly(2))
             ->method('setCursor');
@@ -55,11 +66,12 @@ class OneOrMoreTest extends PHPUnit_Framework_TestCase
             ->getMock();
         $subrule->expects($this->exactly(5))
             ->method('scan')
-            ->will($this->onConsecutiveCalls(true, true, true, false, false));
+            ->will($this->onConsecutiveCalls($result, $result, $result, false,
+                false));
 
         $rule->setValue($mock, $subrule);
 
-        $this->assertSame(true, $mock->scan($context));
+        $this->assertInstanceOf(Result::class, $mock->scan($context));
         $this->assertSame(false, $mock->scan($context));
     }
 
