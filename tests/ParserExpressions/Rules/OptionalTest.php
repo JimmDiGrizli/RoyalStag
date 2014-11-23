@@ -1,5 +1,6 @@
 <?php
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\Optional;
 use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
@@ -41,8 +42,18 @@ class OptionalTest extends PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
+        $result = $this->getMockBuilder(Result::class)
+            ->setMethods([])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $result
+            ->expects($this->exactly(1))
+            ->method('getValue')
+            ->will($this->returnValue(1));
+
         $context
-            ->expects($this->exactly(2))
+            ->expects($this->exactly(3))
             ->method('getCursor')
             ->will($this->returnValue(1));
         $context
@@ -53,12 +64,13 @@ class OptionalTest extends PHPUnit_Framework_TestCase
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();
-        $subrule->expects($this->exactly(2))
+        $subrule->expects($this->exactly(3))
             ->method('scan')
-            ->will($this->onConsecutiveCalls(true, false));
+            ->will($this->onConsecutiveCalls($result, false, true));
 
         $rule->setValue($mock, $subrule);
 
+        $this->assertInstanceOf(Result::class, $mock->scan($context));
         $this->assertSame(true, $mock->scan($context));
         $this->assertSame(true, $mock->scan($context));
     }

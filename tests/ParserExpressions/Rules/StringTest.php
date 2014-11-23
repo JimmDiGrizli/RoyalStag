@@ -1,5 +1,6 @@
 <?php
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
 
@@ -32,6 +33,16 @@ class StringTest extends PHPUnit_Framework_TestCase
         $mock = $this->getObject();
         $rule = $this->getAccessibleProperty(String::class, 'rule');
 
+        $result = $this->getMockBuilder(Result::class)
+            ->setMethods([])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $result
+            ->expects($this->once())
+            ->method('getValue')
+            ->will($this->returnValue('My'));
+
         $context = $this->getMockBuilder(Context::class)
             ->setMethods(['value', 'getCursor', 'setCursor'])
             ->disableOriginalConstructor()
@@ -51,7 +62,7 @@ class StringTest extends PHPUnit_Framework_TestCase
 
         $rule->setValue($mock, 'My');
 
-        $this->assertSame(true, $mock->scan($context));
+        $this->assertSame($result->getValue(), $mock->scan($context)->getValue());
 
         $rule->setValue($mock, 'Mi');
 

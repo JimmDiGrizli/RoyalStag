@@ -1,5 +1,6 @@
 <?php
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
 use GetSky\ParserExpressions\Rules\ZeroOrMore;
@@ -35,15 +36,25 @@ class ZeroOrMoreTest extends PHPUnit_Framework_TestCase
         $mock = $this->getObject();
         $rule = $this->getAccessibleProperty(ZeroOrMore::class, 'rule');
 
+        $result = $this->getMockBuilder(Result::class)
+            ->setMethods([])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $result
+            ->expects($this->exactly(2))
+            ->method('getValue')
+            ->will($this->returnValue(1));
+
         $context = $this->getMockBuilder(Context::class)
             ->setMethods(['value', 'getCursor', 'setCursor'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $context
-            ->expects($this->exactly(5))
+            ->expects($this->exactly(4))
             ->method('getCursor')
-            ->will($this->returnValue(1));
+            ->will($this->onConsecutiveCalls(1,2,3,1));
         $context
             ->expects($this->exactly(2))
             ->method('setCursor');
@@ -54,11 +65,12 @@ class ZeroOrMoreTest extends PHPUnit_Framework_TestCase
             ->getMock();
         $subrule->expects($this->exactly(5))
             ->method('scan')
-            ->will($this->onConsecutiveCalls(true, true, true, false, false));
+            ->will($this->onConsecutiveCalls($result, $result, true, false,
+                false));
 
         $rule->setValue($mock, $subrule);
 
-        $this->assertSame(true, $mock->scan($context));
+        $this->assertInstanceOf(Result::class, $mock->scan($context));
 
         $this->assertSame(true, $mock->scan($context));
     }
