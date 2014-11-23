@@ -37,7 +37,7 @@ abstract class AbstractRule implements Rule
      * @param $rule
      * @return Rule
      */
-    protected function toRule($rule)
+    public  function toRule($rule)
     {
         if ($rule instanceof Rule) {
             return $rule;

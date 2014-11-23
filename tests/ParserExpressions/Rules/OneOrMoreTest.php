@@ -11,7 +11,7 @@ class OneOrMoreTest extends PHPUnit_Framework_TestCase
     public function testInterface()
     {
         $this->assertInstanceOf(
-            'GetSky\ParserExpressions\Rule',
+            'GetSky\ParserExpressions\Rules\AbstractRule',
             $this->getObject()
         );
     }
