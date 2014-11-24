@@ -1,6 +1,6 @@
 <?php
 
-use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Runner;
 
 require_once '../vendor/autoload.php';
 
@@ -59,16 +59,10 @@ class DateParser
     }
 }
 
-
 $parser = new DateParser();
-$context = new Context('0000000000000000002014-12-12');
-print_r($parser->rule()->scan($context)->toArray());
+$runner = new Runner($parser->rule());
 
-$context = new Context('2014.01.04');
-print_r($parser->rule()->scan($context)->toArray());
-
-$context = new Context('20140409');
-print_r($parser->rule()->scan($context)->toArray());
-
-$context = new Context('201449');
-print_r($parser->rule()->scan($context)->toArray());
+print_r($runner->run('0000000000000000002014-12-12')->toArray());
+print_r($runner->run('2014.01.04')->toArray());
+print_r($runner->run('20140409')->toArray());
+print_r($runner->run('201449')->toArray());

@@ -12,12 +12,13 @@ use GetSky\ParserExpressions\Result;
  * instead, returning e2's result.
  *
  * @package GetSky\ParserExpressions\Rules
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 class FirstOf extends AbstractRule
 {
 
     /**
-     * @var \GetSky\ParserExpressions\Rule[] Array with subrules
+     * @var \GetSky\ParserExpressions\Rule[] Array with subrules.
      */
     protected $rules;
 
@@ -27,8 +28,8 @@ class FirstOf extends AbstractRule
     protected $name;
 
     /**
-     * @param array $rules Array with subrules
-     * @param string $name Name of rule
+     * @param array $rules Array with subrules.
+     * @param string $name Label for rule.
      */
     public function __construct(array $rules, $name = "FirstOf")
     {
@@ -39,10 +40,7 @@ class FirstOf extends AbstractRule
     }
 
     /**
-     * Checks the rules for transmission $context.
-     *
-     * @param Context $context
-     * @return boolean
+     * {@inheritdoc}
      */
     public function scan(Context $context)
     {

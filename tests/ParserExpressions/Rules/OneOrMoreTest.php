@@ -2,9 +2,7 @@
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\OneOrMore;
-use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
-use GetSky\ParserExpressions\Rules\ZeroOrMore;
 
 class OneOrMoreTest extends PHPUnit_Framework_TestCase
 {

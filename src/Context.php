@@ -5,6 +5,7 @@ namespace GetSky\ParserExpressions;
  * It is a wrapper for parsing string.
  *
  * @package GetSky\ParserExpressions
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 class Context
 {

@@ -1,7 +1,7 @@
 <?php
 namespace GetSky\ParserExpressions;
 
-class Parser
+class Runner
 {
     /**
      * @var Context
@@ -22,7 +22,7 @@ class Parser
 
     /**
      * @param string $string
-     * @return bool
+     * @return bool|Result
      */
     public function run($string)
     {

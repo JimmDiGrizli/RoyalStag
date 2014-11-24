@@ -12,6 +12,7 @@ use GetSky\ParserExpressions\Rule;
  * backtracking.
  *
  * @package GetSky\ParserExpressions\Rules
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 class ZeroOrMore extends AbstractRule
 {
@@ -32,10 +33,7 @@ class ZeroOrMore extends AbstractRule
     }
 
     /**
-     * Checks the rules for transmission $context.
-     *
-     * @param Context $context
-     * @return boolean
+     * {@inheritdoc}
      */
     public function scan(Context $context)
     {

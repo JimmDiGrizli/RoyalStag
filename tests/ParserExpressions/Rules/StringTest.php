@@ -1,7 +1,6 @@
 <?php
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
 
 class StringTest extends PHPUnit_Framework_TestCase

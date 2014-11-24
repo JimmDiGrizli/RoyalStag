@@ -3,9 +3,7 @@ use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 use GetSky\ParserExpressions\Rules\PredicateAnd;
-use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
-use GetSky\ParserExpressions\Rules\ZeroOrMore;
 
 class PredicateAndTest extends PHPUnit_Framework_TestCase
 {

@@ -2,9 +2,7 @@
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\Optional;
-use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
-use GetSky\ParserExpressions\Rules\ZeroOrMore;
 
 class OptionalTest extends PHPUnit_Framework_TestCase
 {

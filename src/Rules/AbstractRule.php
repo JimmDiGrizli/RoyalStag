@@ -2,23 +2,24 @@
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
-use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
- * Class AbstractRule
  * Abstract class that contains the method of reduction to the rule.
  *
  * @package GetSky\ParserExpressions\Rules
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 abstract class AbstractRule implements Rule
 {
     /**
-     * @var string
+     * @var string The label for the rule.
      */
     protected $name;
 
     /**
+     * Returns the value of the label.
+     *
      * @return string
      */
     public function getName()
@@ -27,13 +28,13 @@ abstract class AbstractRule implements Rule
     }
 
     /**
-     * @param Context $context
-     * @return Result|boolean
+     * {@inheritdoc}
      */
     abstract public function scan(Context $context);
 
     /**
-     * The method converts $rule to Rule.
+     * This method converts the input value to an object that implements an interface Rule.
+     *
      * @param $rule
      * @return Rule
      */

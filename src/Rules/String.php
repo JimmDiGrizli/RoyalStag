@@ -8,6 +8,7 @@ use GetSky\ParserExpressions\Result;
  * It's rule that only succeeds if strings are equal.
  *
  * @package GetSky\ParserExpressions\Rules
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 class String extends AbstractRule
 {
@@ -28,10 +29,7 @@ class String extends AbstractRule
     }
 
     /**
-     * Checks the string for transmission $context.
-     *
-     * @param Context $context
-     * @return boolean|Result
+     * {@inheritdoc}
      */
     public function scan(Context $context)
     {

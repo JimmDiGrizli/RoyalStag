@@ -2,7 +2,6 @@
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
-use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rule;
 
 /**
@@ -10,6 +9,7 @@ use GetSky\ParserExpressions\Rule;
  * again consuming no input in either case.
  *
  * @package GetSky\ParserExpressions\Rules
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 class PredicateNot extends AbstractRule
 {
@@ -29,12 +29,8 @@ class PredicateNot extends AbstractRule
         $this->name = (string)$name;
     }
 
-
     /**
-     * Checks the rules for transmission $context.
-     *
-     * @param Context $context
-     * @return Result|boolean
+     * {@inheritdoc}
      */
     public function scan(Context $context)
     {

@@ -5,6 +5,7 @@ namespace GetSky\ParserExpressions;
  * Result class is used to store the result of the parse/.
  *
  * @package GetSky\ParserExpressions
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 class Result implements \Iterator
 {

@@ -11,12 +11,13 @@ use GetSky\ParserExpressions\Result;
  * then the sequence expression e1 e2 fails.
  *
  * @package GetSky\ParserExpressions\Rules
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 class Sequence extends AbstractRule
 {
 
     /**
-     * @var \GetSky\ParserExpressions\Rule[] Array with subrules
+     * @var \GetSky\ParserExpressions\Rule[] Array with subrules.
      */
     protected $rules;
 
@@ -33,10 +34,7 @@ class Sequence extends AbstractRule
     }
 
     /**
-     * Checks the rules for transmission $context.
-     *
-     * @param Context $context
-     * @return boolean
+     * {@inheritdoc}
      */
     public function scan(Context $context)
     {

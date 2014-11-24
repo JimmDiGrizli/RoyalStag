@@ -10,6 +10,7 @@ use GetSky\ParserExpressions\Rule;
  * repetitions of their sub-expression e.
  *
  * @package GetSky\ParserExpressions\Rules
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 class Optional extends AbstractRule
 {
@@ -30,10 +31,7 @@ class Optional extends AbstractRule
     }
 
     /**
-     * Checks the rules for transmission $context.
-     *
-     * @param Context $context
-     * @return boolean
+     * {@inheritdoc}
      */
     public function scan(Context $context)
     {
