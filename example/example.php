@@ -1,5 +1,6 @@
 <?php
 
+use GetSky\ParserExpressions\Rules\Any;
 use GetSky\ParserExpressions\Runner;
 
 require_once '../vendor/autoload.php';
@@ -9,7 +10,17 @@ class DateParser
 
     public function rule()
     {
-        return Sequence([PredicateAnd(ZeroOrMore("0")),$this->year(), $this->dot(), $this->month(), $this->dot(), $this->day()]);
+        return Sequence(
+            [
+                PredicateAnd(ZeroOrMore("0")),
+                $this->year(),
+                $this->dot(),
+                $this->month(),
+                $this->dot(),
+                $this->day(),
+                PredicateAnd(new Any())
+            ]
+        );
     }
 
     public function year()
@@ -62,7 +73,7 @@ class DateParser
 $parser = new DateParser();
 $runner = new Runner($parser->rule());
 
-print_r($runner->run('0000000000000000002014-12-12')->toArray());
-print_r($runner->run('2014.01.04')->toArray());
-print_r($runner->run('20140409')->toArray());
-print_r($runner->run('201449')->toArray());
+print_r($runner->run('0000000000000000002014-12-12a')->toArray());
+print_r($runner->run('2014.01.04q')->toArray());
+print_r($runner->run('20140409s')->toArray());
+print_r($runner->run('201449d')->toArray());

@@ -1,6 +1,7 @@
 <?php
 
 use GetSky\ParserExpressions\Rule;
+use GetSky\ParserExpressions\Rules\Any;
 use GetSky\ParserExpressions\Rules\FirstOf;
 use GetSky\ParserExpressions\Rules\OneOrMore;
 use GetSky\ParserExpressions\Rules\Optional;
@@ -104,5 +105,15 @@ function PredicateAnd($rule, $name = "PredicateAnd")
 function PredicateNot($rule, $name = "PredicateNot")
 {
     return new PredicateNot($rule, $name);
+}
+
+/**
+ * Syntactic sugar to create an object of class Any.
+ *
+ * @return PredicateNot
+ */
+function Any()
+{
+    return new Any();
 }
 
