@@ -67,4 +67,3 @@ class Context
         $this->cursor = $position;
     }
 }
-

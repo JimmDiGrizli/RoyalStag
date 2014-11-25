@@ -13,7 +13,7 @@ class Result implements \Iterator
     /**
      * @var integer
      */
-    private  $key;
+    private $key;
 
     /**
      * @var integer Result string
