@@ -9,7 +9,7 @@ class AbstractRuleTest extends PHPUnit_Framework_TestCase
     public function testInterface()
     {
         $this->assertInstanceOf(
-            'GetSky\ParserExpressions\Rule',
+            'GetSky\ParserExpressions\RuleInterface',
             $this->getObject()
         );
 

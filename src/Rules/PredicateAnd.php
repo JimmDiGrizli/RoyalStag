@@ -2,7 +2,7 @@
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
-use GetSky\ParserExpressions\Rule;
+use GetSky\ParserExpressions\RuleInterface;
 
 /**
  * The and-predicate expression &e invokes the sub-expression e,
@@ -16,12 +16,12 @@ class PredicateAnd extends AbstractRule
 {
 
     /**
-     * @var \GetSky\ParserExpressions\Rule
+     * @var \GetSky\ParserExpressions\RuleInterface
      */
     protected $rule;
 
     /**
-     * @param array|string|Rule $rule
+     * @param array|string|RuleInterface $rule
      * @param string $name
      */
     public function __construct($rule, $name = "PredicateAnd")

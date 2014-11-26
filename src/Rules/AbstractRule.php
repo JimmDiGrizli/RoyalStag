@@ -2,7 +2,7 @@
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
-use GetSky\ParserExpressions\Rule;
+use GetSky\ParserExpressions\RuleInterface;
 
 /**
  * Abstract class that contains the method of reduction to the rule.
@@ -10,7 +10,7 @@ use GetSky\ParserExpressions\Rule;
  * @package GetSky\ParserExpressions\Rules
  * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
-abstract class AbstractRule implements Rule
+abstract class AbstractRule implements RuleInterface
 {
     /**
      * @var string The label for the rule.
@@ -36,11 +36,11 @@ abstract class AbstractRule implements Rule
      * This method converts the input value to an object that implements an interface Rule.
      *
      * @param $rule
-     * @return Rule
+     * @return RuleInterface
      */
     public function toRule($rule)
     {
-        if ($rule instanceof Rule) {
+        if ($rule instanceof RuleInterface) {
             return $rule;
         }
         if (is_array($rule)) {

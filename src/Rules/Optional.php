@@ -3,7 +3,7 @@ namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\Rule;
+use GetSky\ParserExpressions\RuleInterface;
 
 /**
  * The optional operators consume zero or one consecutive
@@ -16,12 +16,12 @@ class Optional extends AbstractRule
 {
 
     /**
-     * @var \GetSky\ParserExpressions\Rule
+     * @var \GetSky\ParserExpressions\RuleInterface
      */
     protected $rule;
 
     /**
-     * @param array|string|Rule $rule
+     * @param array|string|RuleInterface $rule
      * @param string $name
      */
     public function __construct($rule, $name = "Optional")

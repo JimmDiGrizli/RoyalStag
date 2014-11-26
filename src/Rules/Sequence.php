@@ -17,7 +17,7 @@ class Sequence extends AbstractRule
 {
 
     /**
-     * @var \GetSky\ParserExpressions\Rule[] Array with subrules.
+     * @var \GetSky\ParserExpressions\RuleInterface[] Array with subrules.
      */
     protected $rules;
 

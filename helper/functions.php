@@ -1,6 +1,6 @@
 <?php
 
-use GetSky\ParserExpressions\Rule;
+use GetSky\ParserExpressions\RuleInterface;
 use GetSky\ParserExpressions\Rules\Any;
 use GetSky\ParserExpressions\Rules\FirstOf;
 use GetSky\ParserExpressions\Rules\OneOrMore;
@@ -26,7 +26,7 @@ function FirstOf(array $rules, $name = "FirstOf")
 /**
  * Syntactic sugar to create an object of class OneOrMore.
  *
- * @param Rule $rule
+ * @param RuleInterface $rule
  * @param string $name
  * @return OneOrMore
  */
@@ -38,7 +38,7 @@ function OneOrMore($rule, $name = "OneOrMore")
 /**
  * Syntactic sugar to create an object of class Optional.
  *
- * @param Rule $rule
+ * @param RuleInterface $rule
  * @param string $name
  * @return Optional
  */
@@ -74,7 +74,7 @@ function String($string, $name = "String")
 /**
  * Syntactic sugar to create an object of class ZeroOrMore.
  *
- * @param string|array|Rule $rule
+ * @param string|array|RuleInterface $rule
  * @param string $name
  * @return ZeroOrMore
  */
@@ -86,7 +86,7 @@ function ZeroOrMore($rule, $name = "ZeroOrMore")
 /**
  * Syntactic sugar to create an object of class PredicateAnd.
  *
- * @param Rule $rule
+ * @param RuleInterface $rule
  * @param string $name
  * @return PredicateAnd
  */
@@ -98,7 +98,7 @@ function PredicateAnd($rule, $name = "PredicateAnd")
 /**
  * Syntactic sugar to create an object of class PredicateNot.
  *
- * @param Rule $rule
+ * @param RuleInterface $rule
  * @param string $name
  * @return PredicateNot
  */

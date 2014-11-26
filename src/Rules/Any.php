@@ -3,7 +3,7 @@ namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\Rule;
+use GetSky\ParserExpressions\RuleInterface;
 
 /**
  * It rule consumes any character in the string.
@@ -11,7 +11,7 @@ use GetSky\ParserExpressions\Rule;
  * @package GetSky\ParserExpressions\Rules
  * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
-class Any implements Rule
+class Any implements RuleInterface
 {
 
     protected $name = 'ANY';

@@ -8,14 +8,14 @@ class Runner
      */
     protected $context;
     /**
-     * @var Rule
+     * @var RuleInterface
      */
     protected $rule;
 
     /**
-     * @param Rule $rule
+     * @param RuleInterface $rule
      */
-    public function __construct(Rule $rule)
+    public function __construct(RuleInterface $rule)
     {
         $this->rule = $rule;
     }

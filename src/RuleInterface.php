@@ -7,7 +7,7 @@ namespace GetSky\ParserExpressions;
  * @package GetSky\ParserExpressions
  * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
-interface Rule
+interface RuleInterface
 {
     /**
      * It analyzes the rules for the transmission of context.

@@ -1,7 +1,7 @@
 <?php
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\Rule;
+use GetSky\ParserExpressions\RuleInterface;
 use GetSky\ParserExpressions\Rules\PredicateNot;
 
 class PredicateNotTest extends PHPUnit_Framework_TestCase
@@ -17,7 +17,7 @@ class PredicateNotTest extends PHPUnit_Framework_TestCase
 
     public function testCreatePredicateAnd()
     {
-        $rule = $this->getMockBuilder(Rule::class)
+        $rule = $this->getMockBuilder(RuleInterface::class)
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();

@@ -73,7 +73,6 @@ class DateParser
 $parser = new DateParser();
 $runner = new Runner($parser->rule());
 
-print_r($runner->run('0000000000000000002014-12-12a')->toArray());
-print_r($runner->run('2014.01.04q')->toArray());
-print_r($runner->run('20140409s')->toArray());
-print_r($runner->run('201449d')->toArray());
+$array[] = $runner->run('0000000000000000002014-12-12a')->toArray();
+$array[] = $runner->run('2014.01.04q')->toArray();
+$array[] = $runner->run('201449d')->toArray();

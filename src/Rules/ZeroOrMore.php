@@ -3,7 +3,7 @@ namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\Rule;
+use GetSky\ParserExpressions\RuleInterface;
 
 /**
  * The zero-or-more operators consume zero or more consecutive
@@ -18,12 +18,12 @@ class ZeroOrMore extends AbstractRule
 {
 
     /**
-     * @var \GetSky\ParserExpressions\Rule
+     * @var \GetSky\ParserExpressions\RuleInterface
      */
     protected $rule;
 
     /**
-     * @param array|string|Rule $rule
+     * @param array|string|RuleInterface $rule
      * @param string $name
      */
     public function __construct($rule, $name = "ZeroOrMore")
