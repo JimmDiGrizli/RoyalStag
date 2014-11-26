@@ -36,7 +36,6 @@ class OneOrMore extends AbstractRule
     public function scan(Context $context)
     {
         $preIndex = $index = $context->getCursor();
-        $index = $index = $context->getCursor();
 
         $string = '';
         $result = new Result($this->name);
