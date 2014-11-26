@@ -36,13 +36,12 @@ class Optional extends AbstractRule
     public function scan(Context $context)
     {
         $index = $context->getCursor();
-
         $value = $this->rule->scan($context);
 
-        if ($value === false) {
-            $context->setCursor($index);
-            return true;
-        } elseif ($value === true) {
+        if (is_bool($value)) {
+            if ($value == false) {
+                $context->setCursor($index);
+            }
             return true;
         }
 

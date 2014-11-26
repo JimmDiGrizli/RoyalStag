@@ -37,7 +37,7 @@ class String extends AbstractRule
 
         $string = $context->value(strlen($this->rule));
 
-        if ($string != $this->rule) {
+        if ($string !== $this->rule) {
             $context->setCursor($index);
             return false;
         }
