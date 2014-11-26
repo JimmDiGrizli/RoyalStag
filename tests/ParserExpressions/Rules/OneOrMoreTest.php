@@ -51,9 +51,9 @@ class OneOrMoreTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue(1));
 
         $context
-            ->expects($this->exactly(7))
+            ->expects($this->exactly(5))
             ->method('getCursor')
-            ->will($this->onConsecutiveCalls(1,1,2,3,4,1,1));
+            ->will($this->onConsecutiveCalls(1,2,3,4,1));
         $context
             ->expects($this->exactly(2))
             ->method('setCursor');
