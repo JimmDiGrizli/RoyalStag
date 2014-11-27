@@ -55,7 +55,7 @@ class OptionalTest extends PHPUnit_Framework_TestCase
             ->method('getCursor')
             ->will($this->returnValue(1));
         $context
-            ->expects($this->exactly(1))
+            ->expects($this->exactly(2))
             ->method('setCursor');
 
         $subrule = $this->getMockBuilder(String::class)

@@ -51,7 +51,7 @@ class PredicateAndTest extends PHPUnit_Framework_TestCase
             ->method('getCursor')
             ->will($this->onConsecutiveCalls(1));
         $context
-            ->expects($this->exactly(1))
+            ->expects($this->exactly(3))
             ->method('setCursor');
 
         $subrule = $this->getMockBuilder(Rule::class)

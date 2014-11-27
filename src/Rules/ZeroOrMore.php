@@ -52,7 +52,7 @@ class ZeroOrMore extends AbstractRule
         $context->setCursor($index);
 
         if ($firstIndex != $index) {
-            $result->setValue($string, $index);
+            $result->setValue($string, $firstIndex);
             return $result;
         }
 

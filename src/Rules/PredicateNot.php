@@ -38,9 +38,6 @@ class PredicateNot extends AbstractRule
         $value = $this->rule->scan($context);
         $context->setCursor($index);
 
-        if ($value === false) {
-            return true;
-        }
-        return false;
+        return $value === false ? true : false;
     }
 }

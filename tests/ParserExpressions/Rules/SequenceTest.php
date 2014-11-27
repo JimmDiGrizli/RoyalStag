@@ -51,7 +51,7 @@ class SequenceTest extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $context
-            ->expects($this->exactly(4))
+            ->expects($this->exactly(2))
             ->method('getCursor')
             ->will($this->returnValue(1));
         $context

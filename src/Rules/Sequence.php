@@ -48,7 +48,7 @@ class Sequence extends AbstractRule
                 $context->setCursor($index);
                 return false;
             } elseif ($value === true) {
-                $index = $context->getCursor();
+          //      $index = $context->getCursor();
             } elseif ($value instanceof Result) {
                 $string .= $value->getValue();
                 $result->addChild($value);

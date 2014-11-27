@@ -35,7 +35,7 @@ class OneOrMore extends AbstractRule
      */
     public function scan(Context $context)
     {
-        $preIndex = $index = $context->getCursor();
+        $firstIndex = $index = $context->getCursor();
 
         $string = '';
         $result = new Result($this->name);
@@ -50,8 +50,8 @@ class OneOrMore extends AbstractRule
 
         $context->setCursor($index);
 
-        if ($preIndex != $index) {
-            $result->setValue($string, $index);
+        if ($firstIndex != $index) {
+            $result->setValue($string, $firstIndex);
             return $result;
         }
 
