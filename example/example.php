@@ -76,4 +76,3 @@ $runner = new Runner($parser->rule());
 $array[] = $runner->run('0000000000000000002014-12-12a')->toArray();
 $array[] = $runner->run('2014.01.04q')->toArray();
 $array[] = $runner->run('201449d')->toArray();
-print_r($array);
