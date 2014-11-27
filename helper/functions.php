@@ -7,6 +7,7 @@ use GetSky\ParserExpressions\Rules\OneOrMore;
 use GetSky\ParserExpressions\Rules\Optional;
 use GetSky\ParserExpressions\Rules\PredicateAnd;
 use GetSky\ParserExpressions\Rules\PredicateNot;
+use GetSky\ParserExpressions\Rules\Range;
 use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
 use GetSky\ParserExpressions\Rules\ZeroOrMore;
@@ -108,6 +109,19 @@ function PredicateNot($rule, $name = "PredicateNot")
 }
 
 /**
+ * Syntactic sugar to create an object of class Range.
+ *
+ * @param string|int $left
+ * @param string|int $right
+ * @param string $name
+ * @return Range
+ */
+function CharRange($left, $right, $name = "Range")
+{
+    return new Range($left, $right, $name);
+}
+
+/**
  * Syntactic sugar to create an object of class Any.
  *
  * @return PredicateNot
@@ -116,4 +130,3 @@ function Any()
 {
     return new Any();
 }
-

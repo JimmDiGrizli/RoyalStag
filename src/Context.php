@@ -1,11 +1,12 @@
 <?php
+/**
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @package GetSky\ParserExpressions
+ */
 namespace GetSky\ParserExpressions;
 
 /**
  * It is a wrapper for parsing string.
- *
- * @package GetSky\ParserExpressions
- * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 class Context
 {
@@ -20,11 +21,11 @@ class Context
     protected $cursor = 0;
 
     /**
-     * @param $string string Parsing string
+     * @param string $string Parsing string
      */
     public function __construct($string)
     {
-        $this->string = $string;
+        $this->string = (string) $string;
     }
 
     /**

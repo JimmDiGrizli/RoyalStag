@@ -39,7 +39,7 @@ class Optional extends AbstractRule
         $value = $this->rule->scan($context);
 
         if (is_bool($value)) {
-            if ($value == false) {
+            if ($value === false) {
                 $context->setCursor($index);
             }
             return true;

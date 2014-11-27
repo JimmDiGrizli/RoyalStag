@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @package GetSky\ParserExpressions\Rules
+ */
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
@@ -6,9 +10,6 @@ use GetSky\ParserExpressions\Result;
 
 /**
  * It's rule that only succeeds if strings are equal.
- *
- * @package GetSky\ParserExpressions\Rules
- * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 class String extends AbstractRule
 {
@@ -19,8 +20,8 @@ class String extends AbstractRule
     protected $rule;
 
     /**
-     * @param string $rule String rule
-     * @param string $name
+     * @param string|int $rule String rule
+     * @param string|int $name
      */
     public function __construct($rule, $name = "String")
     {

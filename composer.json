@@ -20,7 +20,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "4.3.*",
-    "squizlabs/php_codesniffer": "1.*"
+    "squizlabs/php_codesniffer": "1.*",
+    "phpdocumentor/phpdocumentor": "2.*"
   },
   "extra": {
     "branch-alias": {

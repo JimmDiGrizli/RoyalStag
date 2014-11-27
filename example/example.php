@@ -1,6 +1,7 @@
 <?php
 
 use GetSky\ParserExpressions\Rules\Any;
+use GetSky\ParserExpressions\Rules\Range;
 use GetSky\ParserExpressions\Runner;
 
 require_once '../vendor/autoload.php';
@@ -36,12 +37,12 @@ class DateParser
 
     public function digital()
     {
-        return FirstOf([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 'Digital');
+        return CharRange(0, 9, 'Digital');
     }
 
     public function d19()
     {
-        return FirstOf([1, 2, 3, 4, 5, 6, 7, 8, 9], 'Digital(1-9)');
+        return CharRange(1, 9, 'Digital(1-9)');
     }
 
     public function d01()
@@ -51,7 +52,7 @@ class DateParser
 
     public function d03()
     {
-        return Optional(FirstOf([0, 1, 2, 3], 'Digital(0-1)'));
+        return Optional(CharRange(0, 3, 'Digital(0-1)'));
     }
 
     public function dot()
@@ -76,3 +77,4 @@ $runner = new Runner($parser->rule());
 $array[] = $runner->run('0000000000000000002014-12-12a')->toArray();
 $array[] = $runner->run('2014.01.04q')->toArray();
 $array[] = $runner->run('201449d')->toArray();
+print_r($array);
