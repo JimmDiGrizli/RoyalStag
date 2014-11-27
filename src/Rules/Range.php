@@ -43,7 +43,7 @@ class Range extends AbstractRule
         $index = $context->getCursor();
         $string = $context->value();
 
-        if ($string >= $this->left && $string <= $this->right) {
+        if (is_string($string) && ($string >= $this->left && $string <= $this->right)) {
             $result = new Result($this->name);
             $result->setValue($string, $index);
             return $result;
