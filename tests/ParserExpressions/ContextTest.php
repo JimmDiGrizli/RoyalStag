@@ -17,6 +17,24 @@ class ContextText extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider providerText
+     */
+    public function testSetString($text)
+    {
+        $mock = $this->getObject();
+        $string = $this->getAccessibleProperty(Context::class, 'string');
+        $cursor = $this->getAccessibleProperty(Context::class, 'cursor');
+
+        $string->setValue($mock, 'test');
+        $cursor->setValue($mock, 2);
+
+        $mock->setString($text);
+
+        $this->assertSame($text, $string->getValue($mock));
+        $this->assertSame(0, $cursor->getValue($mock));
+    }
+
+    /**
      * @dataProvider providerCursor
      */
     public function testSetGetCursor($cursor)

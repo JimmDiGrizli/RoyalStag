@@ -1,5 +1,6 @@
 <?php
 
+use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Rules\Any;
 use GetSky\ParserExpressions\Runner;
 
@@ -71,7 +72,7 @@ class DateParser
 }
 
 $parser = new DateParser();
-$runner = new Runner($parser->rule());
+$runner = new Runner(new Context(), $parser->rule());
 
 $array[] = $runner->run('0000000000000000002014-12-12a')->toArray();
 $array[] = $runner->run('2014.01.04q')->toArray();

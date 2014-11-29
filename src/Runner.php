@@ -13,11 +13,13 @@ class Runner
     protected $rule;
 
     /**
+     * @param Context $context
      * @param RuleInterface $rule
      */
-    public function __construct(RuleInterface $rule)
+    public function __construct(Context $context, RuleInterface $rule)
     {
         $this->rule = $rule;
+        $this->context = $context;
     }
 
     /**
@@ -26,7 +28,7 @@ class Runner
      */
     public function run($string)
     {
-        $this->context = new Context($string);
+        $this->context->setString($string);
         return $this->rule->scan($this->context);
     }
 }

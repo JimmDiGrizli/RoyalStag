@@ -23,9 +23,21 @@ class Context
     /**
      * @param string $string Parsing string
      */
-    public function __construct($string)
+    public function __construct($string = null)
     {
         $this->string = (string) $string;
+    }
+
+    /**
+     * Set new string and reset cursor.
+     *
+     * @param string $string
+     * @return string
+     */
+    public function setString($string)
+    {
+        $this->string = (string)$string;
+        $this->cursor = 0;
     }
 
     /**
