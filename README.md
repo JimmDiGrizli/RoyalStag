@@ -18,7 +18,8 @@ use GetSky\ParserExpressions\Runner;
 
 require_once '../vendor/autoload.php';
 
-$runner = new Runner(new Sequence([new FirstOf(['s', 'd']), new Optional('ab'), 'cd']));
+$rule = new Sequence([new FirstOf(['s', 'd']), new Optional('ab'), 'cd']);
+$runner = new Runner(new Context(), $rule);
 
 $result = $runner->run('dabcd');
 
