@@ -2,6 +2,7 @@
 
 use GetSky\ParserExpressions\RuleInterface;
 use GetSky\ParserExpressions\Rules\Any;
+use GetSky\ParserExpressions\Rules\AnyOf;
 use GetSky\ParserExpressions\Rules\FirstOf;
 use GetSky\ParserExpressions\Rules\OneOrMore;
 use GetSky\ParserExpressions\Rules\Optional;
@@ -119,6 +120,18 @@ function PredicateNot($rule, $name = "PredicateNot")
 function CharRange($left, $right, $name = "Range")
 {
     return new Range($left, $right, $name);
+}
+
+/**
+ * Syntactic sugar to create an object of class AnyOf.
+ *
+ * @param string|int $string
+ * @param string $name
+ * @return AnyOf
+ */
+function AnyOf($string, $name = "AnyOf")
+{
+    return new Range($string, $name);
 }
 
 /**

@@ -10,13 +10,13 @@ use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\RuleInterface;
 
 /**
- * This rule is triggered at the first matched char of input chars.
+ * The rule matching a single character out of a given characters set.
  */
 class AnyOf implements RuleInterface
 {
 
     /**
-     * @var string String with chars.
+     * @var string String with characters.
      */
     protected $rule;
 
@@ -27,7 +27,7 @@ class AnyOf implements RuleInterface
     protected $name;
 
     /**
-     * @param string $rule String with chars.
+     * @param string $rule String with characters.
      * @param string $name Label for rule.
      */
     public function __construct($rule, $name = "AnyOf")
@@ -43,17 +43,13 @@ class AnyOf implements RuleInterface
     {
         $index = $context->getCursor();
         $len = strlen($this->rule);
-
+        $char = $context->value();
         for ($i = 0; $i <= $len; ++$i) {
-            $char = $context->value();
-
-            if ($char == $this->rule{$i}) {
+            if ($char === $this->rule{$i}) {
                 $result = new Result($this->name);
                 $result->setValue($char, $index);
                 return $result;
             }
-
-            $context->setCursor($index);
         };
 
         $context->setCursor($index);
