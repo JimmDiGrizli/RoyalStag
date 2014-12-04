@@ -44,7 +44,7 @@ class AnyOf implements RuleInterface
         $index = $context->getCursor();
         $len = strlen($this->rule);
         $char = $context->value();
-        for ($i = 0; $i <= $len; ++$i) {
+        for ($i = 0; $i < $len; ++$i) {
             if ($char === $this->rule{$i}) {
                 $result = new Result($this->name);
                 $result->setValue($char, $index);
