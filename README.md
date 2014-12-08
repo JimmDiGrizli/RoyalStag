@@ -103,3 +103,4 @@ Array
 
 )
 ```
+[ ![Codeship Status for JimmDiGrizli/RoyalStag](https://codeship.com/projects/1a8eb450-2f6c-0132-983c-222a838845b8/status)](https://codeship.com/projects/39492)
