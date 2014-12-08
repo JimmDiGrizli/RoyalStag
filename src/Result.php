@@ -1,13 +1,14 @@
 <?php
-namespace GetSky\ParserExpressions;
-
 /**
- * Result class is used to store the result of the parse/.
- *
  * @package GetSky\ParserExpressions
  * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
-class Result implements \Iterator
+namespace GetSky\ParserExpressions;
+
+/**
+ * Result class is used to store the result of the parse.
+ */
+class Result implements \Iterator, ResultInterface
 {
 
     /**
@@ -75,6 +76,7 @@ class Result implements \Iterator
 
     /**
      * Added child result
+     *
      * @param Result $child
      */
     public function addChild(Result $child)
