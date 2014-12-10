@@ -5,7 +5,8 @@ namespace GetSky\ParserExpressions\Rules;
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\RuleInterface;
 
-class EOI implements RuleInterface {
+class EOI implements RuleInterface
+{
 
     protected $name = 'EOI';
 

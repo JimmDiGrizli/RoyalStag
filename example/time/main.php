@@ -16,4 +16,3 @@ $array[] = $runner->run('5_08')->toArray();
 $array[] = $runner->run('221012')->toArray();
 $array[] = $runner->run('1205')->toArray();
 $array[] = $runner->run('11')->toArray();
-print_r($array);
