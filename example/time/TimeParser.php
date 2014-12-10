@@ -1,5 +1,6 @@
 <?php
 use GetSky\ParserExpressions\Rules\AnyOf;
+use GetSky\ParserExpressions\Rules\EOI;
 use GetSky\ParserExpressions\Rules\FirstOf;
 use GetSky\ParserExpressions\Rules\Optional;
 use GetSky\ParserExpressions\Rules\Range;
@@ -17,7 +18,8 @@ class TimeParser
                 $this->oneOrTwoDigits(),
                 $this->dot(),
                 $this->twoDigits(),
-                new Optional([$this->dot(), $this->twoDigits()])
+                new Optional([$this->dot(), $this->twoDigits()]),
+                new EOI()
             ],
             'h(h):mm(:ss)'
         );
@@ -25,13 +27,13 @@ class TimeParser
 
     public function hh() {
         return new Sequence(
-            [$this->twoDigits(), new Optional([$this->twoDigits(), new Optional($this->twoDigits())])],
+            [$this->twoDigits(), new Optional([$this->twoDigits(), new Optional($this->twoDigits())]), new EOI()],
             'hh(mm(ss))'
         );
     }
 
     public function oneOrTwoDigits() {
-        return new FirstOf([$this->digit(), [$this->digit(), $this->digit()]], 'one or two digits');
+        return new FirstOf([[$this->digit(), $this->digit()], $this->digit()], 'one or two digits');
     }
 
     public function twoDigits() {
