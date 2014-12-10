@@ -1,4 +1,4 @@
-<?
+<?php
 
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Runner;
