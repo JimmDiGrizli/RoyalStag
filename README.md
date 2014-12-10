@@ -2,6 +2,7 @@ RoyalStag
 =========
 [![Build Status](https://travis-ci.org/JimmDiGrizli/RoyalStag.svg)](https://travis-ci.org/JimmDiGrizli/RoyalStag)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JimmDiGrizli/RoyalStag/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/JimmDiGrizli/RoyalStag/?branch=develop)
+[![Code Coverage](https://scrutinizer-ci.com/g/JimmDiGrizli/RoyalStag/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/JimmDiGrizli/RoyalStag/?branch=develop)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/d2b5f130-4e85-46fb-873f-bfcc9583c745/mini.png)](https://insight.sensiolabs.com/projects/d2b5f130-4e85-46fb-873f-bfcc9583c745)
 
 RoyalStag is a PHP library providing for easy-to-use, yet powerful parsing of
@@ -103,4 +104,3 @@ Array
 
 )
 ```
-[ ![Codeship Status for JimmDiGrizli/RoyalStag](https://codeship.com/projects/1a8eb450-2f6c-0132-983c-222a838845b8/status)](https://codeship.com/projects/39492)
