@@ -17,7 +17,7 @@ class StringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerRule
      */
-    public function testCreateString($rule, $name)
+    public function testCreateString($rule, $name, $action)
     {
         $test = new String($rule, $name);
         $attribute = $this->getAccessibleProperty(String::class, 'rule');
@@ -31,7 +31,8 @@ class StringTest extends PHPUnit_Framework_TestCase
     {
         $mock = $this->getObject();
         $rule = $this->getAccessibleProperty(String::class, 'rule');
-
+        $action = $this->getAccessibleProperty(String::class, 'action');
+        $action->setValue($mock,function(){return true;});
         $result = $this->getMockBuilder(Result::class)
             ->setMethods([])
             ->disableOriginalConstructor()
@@ -71,9 +72,9 @@ class StringTest extends PHPUnit_Framework_TestCase
     public function providerRule()
     {
         return [
-            ['test', 'Test'],
-            ['put', 'Test2'],
-            ['scan', 'Test3']
+            ['test', 'Test', null],
+            ['put', 'Test2', null],
+            ['scan', 'Test3', function () {return true;}]
         ];
     }
 
