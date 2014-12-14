@@ -23,7 +23,6 @@ class AnyOf implements RuleInterface
     /**
      * @var string
      */
-
     protected $name;
 
     /**

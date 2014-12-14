@@ -30,13 +30,15 @@ class FirstOf extends AbstractRule
     /**
      * @param array $rules Array with subrules.
      * @param string $name Label for rule.
+     * @param callable $action
      */
-    public function __construct(array $rules, $name = "FirstOf")
+    public function __construct(array $rules, $name = "FirstOf", callable $action = null)
     {
         foreach ($rules as $rule) {
             $this->rules[] = $this->toRule($rule);
         }
         $this->name = (string)$name;
+        $this->action = $action;
     }
 
     /**
@@ -52,6 +54,8 @@ class FirstOf extends AbstractRule
                 $result = new Result($this->name);
                 $result->addChild($value);
                 $result->setValue($value->getValue(), $index);
+                $this->action();
+
                 return $result;
             }
             $context->setCursor($index);

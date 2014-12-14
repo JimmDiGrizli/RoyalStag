@@ -24,10 +24,11 @@ class OneOrMore extends AbstractRule
      * @param array|string|RuleInterface $rule
      * @param string $name
      */
-    public function __construct($rule, $name = "")
+    public function __construct($rule, $name = "OneOrMore", callable $action = null)
     {
         $this->rule = $this->toRule($rule);
         $this->name = (string)$name;
+        $this->action = $action;
     }
 
     /**
@@ -52,6 +53,7 @@ class OneOrMore extends AbstractRule
 
         if ($firstIndex != $index) {
             $result->setValue($string, $firstIndex);
+            $this->action();
             return $result;
         }
 

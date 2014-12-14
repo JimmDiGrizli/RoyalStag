@@ -20,11 +20,6 @@ class String extends AbstractRule
     protected $rule;
 
     /**
-     * @var callable
-     */
-    protected $action;
-
-    /**
      * @param string|int $rule String rule
      * @param callable $action
      * @param string|int $name
@@ -52,11 +47,7 @@ class String extends AbstractRule
 
         $result = new Result($this->name);
         $result->setValue($string, $index);
-
-        if ($this->action !== null) {
-            $action = $this->action;
-            $action();
-        }
+        $this->action();
 
         return $result;
     }

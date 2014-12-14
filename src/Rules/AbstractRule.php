@@ -18,6 +18,11 @@ abstract class AbstractRule implements RuleInterface
     protected $name;
 
     /**
+     * @var callable The function which is performed after scanning.
+     */
+    protected $action;
+
+    /**
      * Returns the value of the label.
      *
      * @return string
@@ -25,6 +30,19 @@ abstract class AbstractRule implements RuleInterface
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Launches action.
+     *
+     * @return void
+     */
+    public function action()
+    {
+        if ($this->action !== null) {
+            $action = $this->action;
+            $action();
+        }
     }
 
     /**
