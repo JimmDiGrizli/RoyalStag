@@ -27,12 +27,14 @@ class Range extends AbstractRule
      * @param string $left First character of characters.
      * @param string $right Second character of characters.
      * @param string $name
+     * @param callable $action
      */
-    public function __construct($left, $right, $name = "Range")
+    public function __construct($left, $right, $name = "Range", callable $action = null)
     {
         $this->left = (string)$left;
         $this->right = (string)$right;
         $this->name = (string)$name;
+        $this->action = $action;
     }
 
     /**
@@ -46,6 +48,8 @@ class Range extends AbstractRule
         if (is_string($string) && ($string >= $this->left && $string <= $this->right)) {
             $result = new Result($this->name);
             $result->setValue($string, $index);
+            $this->action();
+
             return $result;
         }
         $context->setCursor($index);

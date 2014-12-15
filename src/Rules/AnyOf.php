@@ -7,12 +7,11 @@ namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\RuleInterface;
 
 /**
  * The rule matching a single character out of a given characters set.
  */
-class AnyOf implements RuleInterface
+class AnyOf extends AbstractRule
 {
 
     /**
@@ -28,8 +27,9 @@ class AnyOf implements RuleInterface
     /**
      * @param string $rule String with characters.
      * @param string $name Label for rule.
+     * @param callable $action
      */
-    public function __construct($rule, $name = "AnyOf")
+    public function __construct($rule, $name = "AnyOf", callable $action = null)
     {
         $this->rule = (string)$rule;
         $this->name = (string)$name;
@@ -47,6 +47,8 @@ class AnyOf implements RuleInterface
             if ($char === $this->rule{$i}) {
                 $result = new Result($this->name);
                 $result->setValue($char, $index);
+                $this->action();
+
                 return $result;
             }
         };

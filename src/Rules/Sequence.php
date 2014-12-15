@@ -24,13 +24,15 @@ class Sequence extends AbstractRule
     /**
      * @param array $rules Array with subrules
      * @param string $name
+     * @param callable $action
      */
-    public function __construct(array $rules, $name = "Sequence")
+    public function __construct(array $rules, $name = "Sequence", callable $action = null)
     {
         foreach ($rules as $rule) {
             $this->rules[] = $this->toRule($rule);
         }
         $this->name = (string)$name;
+        $this->action = $action;
     }
 
     /**
@@ -54,6 +56,7 @@ class Sequence extends AbstractRule
         }
 
         $result->setValue($string, $index);
+        $this->action();
 
         return $result;
     }

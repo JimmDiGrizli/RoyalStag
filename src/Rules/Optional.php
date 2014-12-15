@@ -23,11 +23,13 @@ class Optional extends AbstractRule
     /**
      * @param array|string|RuleInterface $rule
      * @param string $name
+     * @param callable $action
      */
-    public function __construct($rule, $name = "Optional")
+    public function __construct($rule, $name = "Optional", callable $action = null)
     {
         $this->rule = $this->toRule($rule);
         $this->name = (string)$name;
+        $this->action = $action;
     }
 
     /**
@@ -46,6 +48,7 @@ class Optional extends AbstractRule
         $result = new Result($this->name);
         $result->setValue($value->getValue(), $index);
         $result->addChild($value);
+        $this->action();
 
         return $result;
     }

@@ -11,7 +11,7 @@ class AnyOfTest extends PHPUnit_Framework_TestCase
     public function testInterface()
     {
         $this->assertInstanceOf(
-            'GetSky\ParserExpressions\RuleInterface',
+            'GetSky\ParserExpressions\Rules\AbstractRule',
             $this->getObject()
         );
     }

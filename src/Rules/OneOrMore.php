@@ -23,6 +23,7 @@ class OneOrMore extends AbstractRule
     /**
      * @param array|string|RuleInterface $rule
      * @param string $name
+     * @param callable $action
      */
     public function __construct($rule, $name = "OneOrMore", callable $action = null)
     {

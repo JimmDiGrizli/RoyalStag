@@ -25,8 +25,9 @@ class ZeroOrMore extends AbstractRule
     /**
      * @param array|string|RuleInterface $rule
      * @param string $name
+     * @param callable $action
      */
-    public function __construct($rule, $name = "ZeroOrMore")
+    public function __construct($rule, $name = "ZeroOrMore", callable $action = null)
     {
         $this->rule = $this->toRule($rule);
         $this->name = (string)$name;
@@ -53,6 +54,7 @@ class ZeroOrMore extends AbstractRule
 
         if ($firstIndex != $index) {
             $result->setValue($string, $firstIndex);
+            $this->action();
             return $result;
         }
 
