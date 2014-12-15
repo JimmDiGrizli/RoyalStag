@@ -31,6 +31,7 @@ class ZeroOrMore extends AbstractRule
     {
         $this->rule = $this->toRule($rule);
         $this->name = (string)$name;
+        $this->action = $action;
     }
 
     /**

@@ -33,6 +33,7 @@ class AnyOf extends AbstractRule
     {
         $this->rule = (string)$rule;
         $this->name = (string)$name;
+        $this->action = $action;
     }
 
     /**
