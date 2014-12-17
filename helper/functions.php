@@ -3,6 +3,7 @@
 use GetSky\ParserExpressions\RuleInterface;
 use GetSky\ParserExpressions\Rules\Any;
 use GetSky\ParserExpressions\Rules\AnyOf;
+use GetSky\ParserExpressions\Rules\EOI;
 use GetSky\ParserExpressions\Rules\FirstOf;
 use GetSky\ParserExpressions\Rules\OneOrMore;
 use GetSky\ParserExpressions\Rules\Optional;
@@ -18,11 +19,12 @@ use GetSky\ParserExpressions\Rules\ZeroOrMore;
  *
  * @param array $rules
  * @param string $name
+ * @param callable $action
  * @return FirstOf
  */
-function FirstOf(array $rules, $name = "FirstOf")
+function FirstOf(array $rules, $name = "FirstOf", callable $action = null)
 {
-    return new FirstOf($rules, $name);
+    return new FirstOf($rules, $name, $action);
 }
 
 /**
@@ -30,11 +32,12 @@ function FirstOf(array $rules, $name = "FirstOf")
  *
  * @param RuleInterface $rule
  * @param string $name
+ * @param callable $action
  * @return OneOrMore
  */
-function OneOrMore($rule, $name = "OneOrMore")
+function OneOrMore($rule, $name = "OneOrMore", callable $action = null)
 {
-    return new OneOrMore($rule, $name);
+    return new OneOrMore($rule, $name, $action);
 }
 
 /**
@@ -42,11 +45,12 @@ function OneOrMore($rule, $name = "OneOrMore")
  *
  * @param RuleInterface $rule
  * @param string $name
+ * @param callable $action
  * @return Optional
  */
-function Optional($rule, $name = "Optional")
+function Optional($rule, $name = "Optional", callable $action = null)
 {
-    return new Optional($rule, $name);
+    return new Optional($rule, $name, $action);
 }
 
 /**
@@ -54,11 +58,12 @@ function Optional($rule, $name = "Optional")
  *
  * @param array $rules
  * @param string $name
+ * @param callable $action
  * @return Sequence
  */
-function Sequence(array $rules, $name = "Sequence")
+function Sequence(array $rules, $name = "Sequence", callable $action = null)
 {
-    return new Sequence($rules, $name);
+    return new Sequence($rules, $name, $action);
 }
 
 /**
@@ -66,11 +71,12 @@ function Sequence(array $rules, $name = "Sequence")
  *
  * @param $string
  * @param string $name
+ * @param callable $action
  * @return GetSky\ParserExpressions\Rules\String
  */
-function String($string, $name = "String")
+function String($string, $name = "String", callable $action = null)
 {
-    return new String($string, $name);
+    return new String($string, $name, $action);
 }
 
 /**
@@ -78,11 +84,12 @@ function String($string, $name = "String")
  *
  * @param string|array|RuleInterface $rule
  * @param string $name
+ * @param callable $action
  * @return ZeroOrMore
  */
-function ZeroOrMore($rule, $name = "ZeroOrMore")
+function ZeroOrMore($rule, $name = "ZeroOrMore", callable $action = null)
 {
-    return new ZeroOrMore($rule, $name);
+    return new ZeroOrMore($rule, $name, $action);
 }
 
 /**
@@ -115,11 +122,12 @@ function PredicateNot($rule, $name = "PredicateNot")
  * @param string|int $left
  * @param string|int $right
  * @param string $name
+ * @param callable $action
  * @return Range
  */
-function CharRange($left, $right, $name = "Range")
+function CharRange($left, $right, $name = "Range", callable $action = null)
 {
-    return new Range($left, $right, $name);
+    return new Range($left, $right, $name, $action);
 }
 
 /**
@@ -142,4 +150,14 @@ function AnyOf($string, $name = "AnyOf")
 function Any()
 {
     return new Any();
+}
+
+/**
+ * Syntactic sugar to create an object of class EOI.
+ *
+ * @return Eoi
+ */
+function EOI()
+{
+    return new Eoi();
 }
