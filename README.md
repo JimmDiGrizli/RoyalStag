@@ -46,61 +46,32 @@ print_r($result->toArray());
 ```
 Array
 (
-    [name] => Sequence
-    [value] => dabcd
-    [start] => 0
-    [end] => 5
-    [children] => Array
+    [name] => Sequence [value] => dabcd [start] => 0 [end] => 5 [children] => Array
         (
             [0] => Array
                 (
-                    [name] => FirstOf
-                    [value] => d
-                    [start] => 0
-                    [end] => 1
-                    [children] => Array
+                    [name] => FirstOf [value] => d [start] => 0 [end] => 1 [children] => Array
                         (
                             [0] => Array
                                 (
-                                    [name] => String
-                                    [value] => d
-                                    [start] => 0
-                                    [end] => 1
+                                    [name] => String [value] => d [start] => 0 [end] => 1
                                 )
-
                         )
-
                 )
-
             [1] => Array
                 (
-                    [name] => Optional
-                    [value] => ab
-                    [start] => 1
-                    [end] => 3
-                    [children] => Array
+                    [name] => Optional [value] => ab [start] => 1 [end] => 3 [children] => Array
                         (
                             [0] => Array
                                 (
-                                    [name] => String
-                                    [value] => ab
-                                    [start] => 1
-                                    [end] => 3
+                                    [name] => String [value] => ab [start] => 1 [end] => 3
                                 )
-
                         )
-
                 )
-
             [2] => Array
                 (
-                    [name] => String
-                    [value] => cd
-                    [start] => 3
-                    [end] => 5
+                    [name] => String [value] => cd [start] => 3 [end] => 5
                 )
-
         )
-
 )
 ```
