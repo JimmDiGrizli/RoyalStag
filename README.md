@@ -75,3 +75,8 @@ Array
         )
 )
 ```
+
+More example
+------------
+See more examples in this [folder](https://github.com/JimmDiGrizli/RoyalStag/tree/develop/example).
+
