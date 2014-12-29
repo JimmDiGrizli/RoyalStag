@@ -20,12 +20,15 @@ class Context
      */
     protected $cursor = 0;
 
+    protected $error = null;
+
     /**
      * @param string $string Parsing string
      */
     public function __construct($string = null)
     {
-        $this->string = (string) $string;
+        $this->string = (string)$string;
+        $this->error = new Error();
     }
 
     /**
@@ -38,6 +41,7 @@ class Context
     {
         $this->string = (string)$string;
         $this->cursor = 0;
+        $this->error->clear();
     }
 
     /**
@@ -51,7 +55,7 @@ class Context
         if ($this->cursor + $size > strlen($this->string)) {
             return false;
         }
-        $value = substr($this->string, $this->cursor, $size);
+        $value = mb_substr($this->string, $this->cursor, $size, 'utf8');
         $this->cursor += $size;
         return $value;
     }
@@ -78,5 +82,19 @@ class Context
             throw new \Exception('The cursor can\'t be negative.');
         }
         $this->cursor = $position;
+    }
+
+    public function error($rule, $index)
+    {
+        $this->error->update(
+            $rule,
+            $index,
+            mb_substr($this->string, $index, $index + 10, 'utf8')
+        );
+    }
+
+    public function getError()
+    {
+        return $this->error;
     }
 }

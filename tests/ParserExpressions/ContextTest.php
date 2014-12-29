@@ -1,6 +1,7 @@
 <?php
 
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Error;
 
 class ContextText extends PHPUnit_Framework_TestCase
 {
@@ -24,10 +25,17 @@ class ContextText extends PHPUnit_Framework_TestCase
         $mock = $this->getObject();
         $string = $this->getAccessibleProperty(Context::class, 'string');
         $cursor = $this->getAccessibleProperty(Context::class, 'cursor');
+        $error = $this->getAccessibleProperty(Context::class, 'error');
 
         $string->setValue($mock, 'test');
         $cursor->setValue($mock, 2);
-
+        $error->setValue(
+            $mock,
+            $this->getMockBuilder(Error::class)
+            ->setMethods(null)
+            ->disableOriginalConstructor()
+            ->getMock()
+        );
         $mock->setString($text);
 
         $this->assertSame($text, $string->getValue($mock));

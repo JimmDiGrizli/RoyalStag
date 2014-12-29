@@ -32,7 +32,9 @@ class StringTest extends PHPUnit_Framework_TestCase
         $mock = $this->getObject();
         $rule = $this->getAccessibleProperty(String::class, 'rule');
         $action = $this->getAccessibleProperty(String::class, 'action');
-        $action->setValue($mock,function(){return true;});
+        $action->setValue($mock, function () {
+                return true;
+            });
         $result = $this->getMockBuilder(Result::class)
             ->setMethods([])
             ->disableOriginalConstructor()
@@ -44,7 +46,7 @@ class StringTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue('My'));
 
         $context = $this->getMockBuilder(Context::class)
-            ->setMethods(['value', 'getCursor', 'setCursor'])
+            ->setMethods(['value', 'getCursor', 'setCursor', 'error'])
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -62,7 +64,8 @@ class StringTest extends PHPUnit_Framework_TestCase
 
         $rule->setValue($mock, 'My');
 
-        $this->assertSame($result->getValue(), $mock->scan($context)->getValue());
+        $this->assertSame($result->getValue(),
+            $mock->scan($context)->getValue());
 
         $rule->setValue($mock, 'Mi');
 
@@ -74,7 +77,13 @@ class StringTest extends PHPUnit_Framework_TestCase
         return [
             ['test', 'Test', null],
             ['put', 'Test2', null],
-            ['scan', 'Test3', function () {return true;}]
+            [
+                'scan',
+                'Test3',
+                function () {
+                    return true;
+                }
+            ]
         ];
     }
 

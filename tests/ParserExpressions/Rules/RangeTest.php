@@ -37,7 +37,7 @@ class RangeTest extends PHPUnit_Framework_TestCase
         $right = $this->getAccessibleProperty(Range::class, 'right');
 
         $context = $this->getMockBuilder(Context::class)
-            ->setMethods(['value', 'getCursor', 'setCursor'])
+            ->setMethods(['value', 'getCursor', 'setCursor', 'error'])
             ->disableOriginalConstructor()
             ->getMock();
 

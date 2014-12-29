@@ -42,6 +42,8 @@ class String extends AbstractRule
 
         if ($string !== $this->rule) {
             $context->setCursor($index);
+            $context->error($this, $index);
+
             return false;
         }
 

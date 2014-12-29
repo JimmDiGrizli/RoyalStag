@@ -19,6 +19,7 @@ class EOI implements RuleInterface
         $value = $context->value();
         if ($value !== false) {
             $context->setCursor($index);
+            $context->error($this, $index);
             return false;
         }
 
