@@ -8,7 +8,8 @@ namespace GetSky\ParserExpressions;
 /**
  * It is a error result for parsing string.
  */
-class Error {
+class Error 
+{
 
     protected $rule;
 
