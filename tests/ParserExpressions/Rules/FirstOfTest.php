@@ -48,7 +48,7 @@ class FirstOfTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue(1));
 
         $context = $this->getMockBuilder(Context::class)
-            ->setMethods(['value', 'getCursor', 'setCursor'])
+            ->setMethods(['value', 'getCursor', 'setCursor', 'error'])
             ->disableOriginalConstructor()
             ->getMock();
 
