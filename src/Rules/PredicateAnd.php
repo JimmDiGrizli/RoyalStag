@@ -39,6 +39,11 @@ class PredicateAnd extends AbstractRule
         $value = $this->rule->scan($context);
         $context->setCursor($index);
 
-        return $value === false ? false : true;
+        if ($value === false) {
+            $context->error($this, $index);
+            return false;
+        }
+
+        return true;
     }
 }

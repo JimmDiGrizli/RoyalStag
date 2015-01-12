@@ -36,7 +36,7 @@ class PredicateNotTest extends PHPUnit_Framework_TestCase
         $rule = $this->getAccessibleProperty(PredicateNot::class, 'rule');
 
         $context = $this->getMockBuilder(Context::class)
-            ->setMethods(['value', 'getCursor', 'setCursor'])
+            ->setMethods(['value', 'getCursor', 'setCursor', 'error'])
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -53,7 +53,7 @@ class PredicateNotTest extends PHPUnit_Framework_TestCase
             ->expects($this->exactly(3))
             ->method('setCursor');
 
-        $subrule = $this->getMockBuilder(Rule::class)
+        $subrule = $this->getMockBuilder(RuleInterface::class)
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();

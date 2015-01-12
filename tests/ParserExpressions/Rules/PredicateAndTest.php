@@ -37,7 +37,7 @@ class PredicateAndTest extends PHPUnit_Framework_TestCase
         $rule = $this->getAccessibleProperty(PredicateAnd::class, 'rule');
 
         $context = $this->getMockBuilder(Context::class)
-            ->setMethods(['value', 'getCursor', 'setCursor'])
+            ->setMethods(['value', 'getCursor', 'setCursor', 'error'])
             ->disableOriginalConstructor()
             ->getMock();
 
