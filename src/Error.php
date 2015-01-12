@@ -19,7 +19,7 @@ class Error
 
     /**
      * Update error information
-     * 
+     *
      * @param $rule RuleInterface
      * @param $index int
      * @param $text string
@@ -43,7 +43,7 @@ class Error
 
     /**
      * Displays a text description of the error
-     * 
+     *
      * @return string
      */
     public function __toString()

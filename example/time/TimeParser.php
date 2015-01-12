@@ -8,11 +8,13 @@ use GetSky\ParserExpressions\Rules\Sequence;
 
 class TimeParser
 {
-    public function time() {
+    public function time()
+    {
         return new FirstOf([$this->hhmmss(), $this->hh()]);
     }
 
-    public function hhmmss() {
+    public function hhmmss()
+    {
         return new Sequence(
             [
                 $this->oneOrTwoDigits(),
@@ -25,26 +27,31 @@ class TimeParser
         );
     }
 
-    public function hh() {
+    public function oneOrTwoDigits()
+    {
+        return new FirstOf([[$this->digit(), $this->digit()], $this->digit()], 'one or two digits');
+    }
+
+    public function digit()
+    {
+        return new Range(0, 9, 'digit');
+    }
+
+    public function dot()
+    {
+        return new Optional(new AnyOf(':.-_', 'dot'));
+    }
+
+    public function twoDigits()
+    {
+        return new Sequence([$this->digit(), $this->digit()], 'two digits');
+    }
+
+    public function hh()
+    {
         return new Sequence(
             [$this->twoDigits(), new Optional([$this->twoDigits(), new Optional($this->twoDigits())]), new EOI()],
             'hh(mm(ss))'
         );
-    }
-
-    public function oneOrTwoDigits() {
-        return new FirstOf([[$this->digit(), $this->digit()], $this->digit()], 'one or two digits');
-    }
-
-    public function twoDigits() {
-        return new Sequence([$this->digit(), $this->digit()], 'two digits');
-    }
-
-    public function digit() {
-        return new Range(0, 9, 'digit');
-    }
-
-    public function dot() {
-        return new Optional(new AnyOf(':.-_', 'dot'));
     }
 }

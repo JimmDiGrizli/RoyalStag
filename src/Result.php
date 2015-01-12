@@ -12,34 +12,29 @@ class Result implements \Iterator, ResultInterface
 {
 
     /**
-     * @var integer
-     */
-    private $key;
-
-    /**
      * @var integer Result string
      */
     protected $name;
-
     /**
      * @var string Result string
      */
     protected $value;
-
     /**
      * @var integer Start position
      */
     protected $start;
-
     /**
      * @var integer Final position
      */
     protected $end;
-
     /**
      * @var Result[]
      */
     protected $children;
+    /**
+     * @var integer
+     */
+    private $key;
 
     public function __construct($name)
     {

@@ -1,10 +1,5 @@
 <?php
-use GetSky\ParserExpressions\Rules\AnyOf;
-use GetSky\ParserExpressions\Rules\EOI;
 use GetSky\ParserExpressions\Rules\FirstOf;
-use GetSky\ParserExpressions\Rules\Optional;
-use GetSky\ParserExpressions\Rules\Range;
-use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Rules\String;
 
 class ActionParser
@@ -16,7 +11,8 @@ class ActionParser
         return new FirstOf([$this->foo(), $this->bar()]);
     }
 
-    public function foo() {
+    public function foo()
+    {
         return new String(
             'foo',
             'String',
@@ -26,7 +22,8 @@ class ActionParser
         );
     }
 
-    public function bar() {
+    public function bar()
+    {
         return new String(
             'bar',
             'String',
