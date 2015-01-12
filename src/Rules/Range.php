@@ -52,7 +52,9 @@ class Range extends AbstractRule
 
             return $result;
         }
+        
         $context->setCursor($index);
+        $context->error($this, $index);
         return false;
     }
 }

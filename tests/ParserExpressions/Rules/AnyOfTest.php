@@ -44,7 +44,7 @@ class AnyOfTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue('e'));
 
         $context = $this->getMockBuilder(Context::class)
-            ->setMethods(['value', 'getCursor', 'setCursor'])
+            ->setMethods(['value', 'getCursor', 'setCursor', 'error'])
             ->disableOriginalConstructor()
             ->getMock();
 

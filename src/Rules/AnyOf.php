@@ -55,6 +55,7 @@ class AnyOf extends AbstractRule
         };
 
         $context->setCursor($index);
+        $context->error($this, $index);
         return false;
     }
 }

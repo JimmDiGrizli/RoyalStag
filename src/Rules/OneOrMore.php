@@ -58,6 +58,7 @@ class OneOrMore extends AbstractRule
             return $result;
         }
 
+        $context->error($this, $index);
         return false;
     }
 }

@@ -28,7 +28,7 @@ class EOITest extends PHPUnit_Framework_TestCase
         $mock = $this->getObject();
 
         $context = $this->getMockBuilder(Context::class)
-            ->setMethods(['value', 'getCursor', 'setCursor'])
+            ->setMethods(['value', 'getCursor', 'setCursor', 'error'])
             ->disableOriginalConstructor()
             ->getMock();
 

@@ -25,6 +25,7 @@ class Any implements RuleInterface
         $value = $context->value();
 
         if ($value === false) {
+            $context->error($this, $index);
             return false;
         }
 
