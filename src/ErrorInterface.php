@@ -5,7 +5,8 @@
  */
 namespace GetSky\ParserExpressions;
 
-interface ErrorInterface {
+interface ErrorInterface
+{
 
     /**
      * Update error information
