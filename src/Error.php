@@ -8,7 +8,7 @@ namespace GetSky\ParserExpressions;
 /**
  * It is a error result for parsing string.
  */
-class Error
+class Error implements ErrorInterface
 {
 
     protected $rule;
@@ -18,11 +18,7 @@ class Error
     protected $text;
 
     /**
-     * Update error information
-     *
-     * @param $rule RuleInterface
-     * @param $index int
-     * @param $text string
+     * {@inheritdoc}
      */
     public function update(RuleInterface $rule, $index, $text)
     {
@@ -32,7 +28,7 @@ class Error
     }
 
     /**
-     * Remove all information about the error
+     * {@inheritdoc}
      */
     public function clear()
     {
