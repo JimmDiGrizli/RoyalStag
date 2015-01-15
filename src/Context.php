@@ -20,15 +20,19 @@ class Context
      */
     protected $cursor = 0;
 
-    protected $error = null;
+    /**
+     * @var ErrorInterface Error handler.
+     */
+    protected $error;
 
     /**
+     * @param ErrorInterface $error
      * @param string $string Parsing string
      */
-    public function __construct($string = null)
+    public function __construct(ErrorInterface $error, $string = null)
     {
         $this->string = (string)$string;
-        $this->error = new Error();
+        $this->error = $error;
     }
 
     /**

@@ -1,13 +1,14 @@
 <?php
 
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Error;
 use GetSky\ParserExpressions\Runner;
 
 require_once '../../vendor/autoload.php';
 require_once 'TimeParser.php';
 
 $parser = new TimeParser();
-$runner = new Runner(new Context(), $parser->time());
+$runner = new Runner(new Context(new Error()), $parser->time());
 
 $array[] = $runner->run('10:12:10')->toArray();
 $array[] = $runner->run('5:01:04')->toArray();

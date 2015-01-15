@@ -2,6 +2,7 @@
 
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Error;
+use GetSky\ParserExpressions\ErrorInterface;
 
 class ContextText extends PHPUnit_Framework_TestCase
 {
@@ -11,7 +12,11 @@ class ContextText extends PHPUnit_Framework_TestCase
      */
     public function testCreateContext($text)
     {
-        $test = new Context($text);
+        $error = $this->getMockBuilder(ErrorInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $test = new Context($error, $text);
         $string = $this->getAccessibleProperty(Context::class, 'string');
 
         $this->assertSame($text, $string->getValue($test));

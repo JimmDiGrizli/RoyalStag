@@ -1,12 +1,14 @@
 <?php
 
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Error;
 use GetSky\ParserExpressions\Runner;
 
 require_once '../../vendor/autoload.php';
+require_once 'ActionParser.php';
 
 $parser = new ActionParser();
-$runner = new Runner(new Context(), $parser->closure());
+$runner = new Runner(new Context(new Error()), $parser->closure());
 
 $runner->run('foo')->toArray();
 /*
