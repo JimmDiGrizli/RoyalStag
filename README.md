@@ -32,11 +32,12 @@ use GetSky\ParserExpressions\Rules\Optional;
 use GetSky\ParserExpressions\Rules\Sequence;
 use GetSky\ParserExpressions\Runner;
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Error;
 
 require_once '../vendor/autoload.php';
 
 $rule = new Sequence([new FirstOf(['Hello', 'Hi']), new Optional(' '), 'world']);
-$runner = new Runner(new Context(), $rule);
+$runner = new Runner(new Context(new Error()), $rule);
 
 $result = $runner->run('Hi world!');
 
