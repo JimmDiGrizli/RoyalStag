@@ -21,4 +21,10 @@ interface ErrorInterface
      * Remove all information about the error
      */
     public function clear();
+
+    /**
+     * Indicates whether the modification.
+     * @return boolean
+     */
+    public function isChanged();
 }

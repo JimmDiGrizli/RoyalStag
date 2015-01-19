@@ -31,4 +31,15 @@ class Runner
         $this->context->setString($string);
         return $this->rule->scan($this->context);
     }
+
+    public function hasError()
+    {
+        $error = $this->context->getError();
+
+        if ($error->isChanged()) {
+            return $error;
+        }
+
+        return false;
+    }
 }

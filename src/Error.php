@@ -17,11 +17,14 @@ class Error implements ErrorInterface
 
     protected $text;
 
+    protected $changed = false;
+
     /**
      * {@inheritdoc}
      */
     public function update(RuleInterface $rule, $index, $text)
     {
+        $this->changed = true;
         $this->index = $index;
         $this->rule = $rule;
         $this->text = $text;
@@ -35,6 +38,14 @@ class Error implements ErrorInterface
         $this->index = null;
         $this->rule = null;
         $this->text = null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isChanged()
+    {
+        return $this->changed;
     }
 
     /**
