@@ -15,7 +15,6 @@ class Runner
     /**
      * @param Context $context
      * @param RuleInterface $rule
-     * @param ErrorInterface $error
      */
     public function __construct(Context $context, RuleInterface $rule)
     {
