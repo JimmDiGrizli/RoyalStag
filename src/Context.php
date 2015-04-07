@@ -21,18 +21,30 @@ class Context
     protected $cursor = 0;
 
     /**
-     * @var ErrorInterface Error handler.
+     * @var int This is the farthest character where the error occurred.
      */
-    protected $error;
+    protected $maxErrorCursor;
 
     /**
-     * @param ErrorInterface $error
+     * @var array The array of errors.
+     */
+    protected $error = [];
+
+    /**
+     * @var ErrorInterface Error handler.
+     */
+    protected $errorPrototype;
+
+
+
+    /**
+     * @param ErrorInterface $errorPrototype
      * @param string $string Parsing string
      */
-    public function __construct(ErrorInterface $error, $string = null)
+    public function __construct(ErrorInterface $errorPrototype, $string = null)
     {
         $this->string = (string)$string;
-        $this->error = $error;
+        $this->errorPrototype = $errorPrototype;
     }
 
     /**
@@ -45,7 +57,6 @@ class Context
     {
         $this->string = (string)$string;
         $this->cursor = 0;
-        $this->error->clear();
     }
 
     /**
@@ -90,14 +101,21 @@ class Context
 
     public function error($rule, $index)
     {
-        $this->error->update(
-            $rule,
-            $index,
-            mb_substr($this->string, $index, $index + 10, 'utf8')
-        );
+        $error = clone $this->errorPrototype;
+        $error->update($rule, $index);
+        $this->error[$index][] = [$error];
+
+        if ($this->maxErrorCursor < $index) {
+            $this->maxErrorCursor = $index;
+        }
     }
 
     public function getError()
+    {
+        return $this->error[$this->maxErrorCursor];
+    }
+
+    public function getAllErrors()
     {
         return $this->error;
     }

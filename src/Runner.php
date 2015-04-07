@@ -34,9 +34,7 @@ class Runner
 
     public function hasError()
     {
-        $error = $this->context->getError();
-
-        if ($error->isChanged()) {
+        if ($error = $this->context->getError()) {
             return $error;
         }
 

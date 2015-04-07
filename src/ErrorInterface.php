@@ -13,18 +13,8 @@ interface ErrorInterface
      *
      * @param $rule RuleInterface
      * @param $index int
-     * @param $text string
      */
-    public function update(RuleInterface $rule, $index, $text);
+    public function update(RuleInterface $rule, $index);
 
-    /**
-     * Remove all information about the error
-     */
-    public function clear();
-
-    /**
-     * Indicates whether the modification.
-     * @return boolean
-     */
-    public function isChanged();
+    public function __clone();
 }

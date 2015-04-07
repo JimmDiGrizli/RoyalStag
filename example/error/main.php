@@ -5,11 +5,11 @@ use GetSky\ParserExpressions\Error;
 use GetSky\ParserExpressions\Runner;
 
 require_once '../../vendor/autoload.php';
-require_once 'TimeParser.php';
+require_once '../time/TimeParser.php';
 
 $parser = new TimeParser();
-$runner = new Runner(new Context(new Error()), $parser->hhmmss());
+$runner = new Runner(new Context(new Error()), $parser->time());
 
-$broken = $runner->run('10:XX:10');
+$broken = $runner->run('10XX10');
 
-echo $runner->hasError();
+var_dump( $runner->hasError());
