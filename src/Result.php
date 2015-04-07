@@ -12,7 +12,7 @@ class Result implements \Iterator, ResultInterface
 {
 
     /**
-     * @var integer Result string
+     * @var string Result string
      */
     protected $name;
     /**
@@ -36,11 +36,13 @@ class Result implements \Iterator, ResultInterface
      */
     private $key;
 
+    /**
+     * @param $name
+     */
     public function __construct($name)
     {
         $this->name = $name;
     }
-
 
     /**
      * @return string
