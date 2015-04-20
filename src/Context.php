@@ -35,8 +35,6 @@ class Context
      */
     protected $errorPrototype;
 
-
-
     /**
      * @param ErrorInterface $errorPrototype
      * @param string $string Parsing string
@@ -72,6 +70,7 @@ class Context
         }
         $value = mb_substr($this->string, $this->cursor, $size, 'utf8');
         $this->cursor += $size;
+
         return $value;
     }
 
@@ -99,7 +98,11 @@ class Context
         $this->cursor = $position;
     }
 
-    public function error($rule, $index)
+    /**
+     * @param RuleInterface $rule
+     * @param int $index
+     */
+    public function error(RuleInterface $rule, $index)
     {
         $error = clone $this->errorPrototype;
         $error->update($rule, $index);
@@ -110,11 +113,17 @@ class Context
         }
     }
 
+    /**
+     * @return ErrorInterface
+     */
     public function getError()
     {
         return $this->error[$this->maxErrorCursor];
     }
 
+    /**
+     * @return array
+     */
     public function getAllErrors()
     {
         return $this->error;

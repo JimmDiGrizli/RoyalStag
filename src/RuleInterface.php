@@ -1,11 +1,12 @@
 <?php
+/**
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @package GetSky\ParserExpressions
+ */
 namespace GetSky\ParserExpressions;
 
 /**
  * Interface for parsing rules.
- *
- * @package GetSky\ParserExpressions
- * @author  Alexander Getmansky <getmansk_y@yandex.ru>
  */
 interface RuleInterface
 {

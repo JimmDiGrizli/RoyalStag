@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @package GetSky\ParserExpressions
+ */
 namespace GetSky\ParserExpressions;
 
 class Runner
@@ -29,9 +33,13 @@ class Runner
     public function run($string)
     {
         $this->context->setString($string);
+
         return $this->rule->scan($this->context);
     }
 
+    /**
+     * @return bool|ErrorInterface
+     */
     public function hasError()
     {
         if ($error = $this->context->getError()) {
