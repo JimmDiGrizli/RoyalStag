@@ -37,7 +37,7 @@ class Result implements \Iterator, ResultInterface
     private $key;
 
     /**
-     * @param $name
+     * @param string $name
      */
     public function __construct($name)
     {

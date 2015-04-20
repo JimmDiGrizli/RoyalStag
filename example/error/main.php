@@ -12,4 +12,4 @@ $runner = new Runner(new Context(new Error()), $parser->time());
 
 $broken = $runner->run('10XX10');
 
-var_dump( $runner->hasError());
+$error = $runner->hasError();

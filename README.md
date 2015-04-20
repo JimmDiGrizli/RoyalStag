@@ -21,7 +21,7 @@ practice, e.g. by a recursive descent parser.
 
 Simple example
 --------------
-Below is a simple example, and outputs the result as an array:
+The following example shows operating principle:
 
 ```php
 
