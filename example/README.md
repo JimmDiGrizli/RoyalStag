@@ -8,3 +8,7 @@ Examples
 
   A simple example of how to use actions based on closures.
   
+3. Error handler
+
+  A simple example of how to get error information.
+  
