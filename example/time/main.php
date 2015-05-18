@@ -8,7 +8,7 @@ require_once '../../vendor/autoload.php';
 require_once 'TimeParser.php';
 
 $parser = new TimeParser();
-$runner = new Runner(new Context(new Error()), $parser->time());
+$runner = new Runner($parser->time());
 
 $array[] = $runner->run('10:12:10')->toArray();
 $array[] = $runner->run('5:01:04')->toArray();

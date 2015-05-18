@@ -8,7 +8,7 @@ require_once '../../vendor/autoload.php';
 require_once 'ActionParser.php';
 
 $parser = new ActionParser();
-$runner = new Runner(new Context(new Error()), $parser->closure());
+$runner = new Runner($parser->closure());
 
 $runner->run('foo')->toArray();
 /*

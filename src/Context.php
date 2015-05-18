@@ -39,10 +39,14 @@ class Context
      * @param ErrorInterface $errorPrototype
      * @param string $string Parsing string
      */
-    public function __construct(ErrorInterface $errorPrototype, $string = null)
+    public function __construct(ErrorInterface $errorPrototype = null, $string = null)
     {
         $this->string = (string)$string;
-        $this->errorPrototype = $errorPrototype;
+        if ($errorPrototype != null) {
+            $this->errorPrototype = $errorPrototype;
+        } else {
+            $this->errorPrototype = new Error();
+        }
     }
 
     /**
@@ -55,6 +59,8 @@ class Context
     {
         $this->string = (string)$string;
         $this->cursor = 0;
+        $this->error = [];
+        $this->maxErrorCursor = null;
     }
 
     /**

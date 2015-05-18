@@ -43,7 +43,7 @@ use GetSky\ParserExpressions\Error;
 require_once '../vendor/autoload.php';
 
 $rule = new Sequence([new FirstOf(['Hello', 'Hi']), new Optional(' '), 'world']);
-$runner = new Runner(new Context(new Error()), $rule);
+$runner = new Runner($rule);
 
 $result = $runner->run('Hi world!');
 
@@ -82,7 +82,7 @@ Array
             [1] => Array
                 (
                     [name] => Optional
-                    [value] =>  
+                    [value] =>
                     [start] => 2
                     [end] => 3
                     [children] => Array
@@ -90,7 +90,7 @@ Array
                             [0] => Array
                                 (
                                     [name] => String
-                                    [value] =>  
+                                    [value] =>
                                     [start] => 2
                                     [end] => 3
                                 )

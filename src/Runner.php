@@ -20,10 +20,14 @@ class Runner
      * @param Context $context
      * @param RuleInterface $rule
      */
-    public function __construct(Context $context, RuleInterface $rule)
+    public function __construct(RuleInterface $rule, Context $context = null)
     {
         $this->rule = $rule;
-        $this->context = $context;
+        if ($context != null) {
+            $this->context = $context;
+        }  else {
+            $this->context = new Context();
+        }
     }
 
     /**

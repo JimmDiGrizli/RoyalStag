@@ -8,7 +8,7 @@ require_once '../../vendor/autoload.php';
 require_once '../time/TimeParser.php';
 
 $parser = new TimeParser();
-$runner = new Runner(new Context(new Error()), $parser->time());
+$runner = new Runner($parser->time());
 
 $broken = $runner->run('10XX10');
 
