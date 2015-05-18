@@ -25,7 +25,7 @@ class Runner
         $this->rule = $rule;
         if ($context != null) {
             $this->context = $context;
-        }  else {
+        } else {
             $this->context = new Context();
         }
     }
