@@ -23,11 +23,7 @@ class Runner
     public function __construct(RuleInterface $rule, Context $context = null)
     {
         $this->rule = $rule;
-        if ($context != null) {
-            $this->context = $context;
-        } else {
-            $this->context = new Context();
-        }
+        $this->context = $context == null ? new Context() : $context;
     }
 
     /**

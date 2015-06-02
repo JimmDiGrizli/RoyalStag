@@ -42,11 +42,7 @@ class Context
     public function __construct(ErrorInterface $errorPrototype = null, $string = null)
     {
         $this->string = (string)$string;
-        if ($errorPrototype != null) {
-            $this->errorPrototype = $errorPrototype;
-        } else {
-            $this->errorPrototype = new Error();
-        }
+        $this->errorPrototype = $errorPrototype == null ? new Error() : $errorPrototype;
     }
 
     /**
