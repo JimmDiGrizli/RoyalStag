@@ -29,7 +29,6 @@ Simple example
 The following example shows operating principle:
 
 ```php
-
 <?php
 
 use GetSky\ParserExpressions\Rules\FirstOf;
@@ -46,9 +45,9 @@ $runner = new Runner($rule);
 
 $result = $runner->run('Hi world!');
 
-print_r($result->toArray());
+$tree = $result->toArray();
 ```
-
+The variable contains:
 ```
 Array
 (
