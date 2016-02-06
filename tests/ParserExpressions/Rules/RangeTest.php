@@ -1,8 +1,6 @@
 <?php
 use GetSky\ParserExpressions\Context;
-use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\Range;
-use GetSky\ParserExpressions\Rules\String;
 
 class RangeTest extends PHPUnit_Framework_TestCase
 {

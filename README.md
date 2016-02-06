@@ -3,7 +3,6 @@ RoyalStag
 [![Build Status](https://travis-ci.org/JimmDiGrizli/RoyalStag.svg)](https://travis-ci.org/JimmDiGrizli/RoyalStag)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JimmDiGrizli/RoyalStag/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/JimmDiGrizli/RoyalStag/?branch=develop)
 [![Code Coverage](https://scrutinizer-ci.com/g/JimmDiGrizli/RoyalStag/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/JimmDiGrizli/RoyalStag/?branch=develop)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d2b5f130-4e85-46fb-873f-bfcc9583c745/mini.png)](https://insight.sensiolabs.com/projects/d2b5f130-4e85-46fb-873f-bfcc9583c745)
 
 RoyalStag is a PHP library for parsing text realizes the strengths of parsing expression grammar, or [PEG](http://en.wikipedia.org/wiki/Parsing_expression_grammar "Parsing expression grammar"). The main feature is the grammar, which is set directly in the code of PHP. This means that you do not need to learn any third-party formats to start using the library, and you do not lose the opportunities that gives you your favorite IDE (syntax highlighting, refactoring, etc.).
 
@@ -69,7 +68,7 @@ Array
                         (
                             [0] => Array
                                 (
-                                    [name] => String
+                                    [name] => Row
                                     [value] => Hi
                                     [start] => 0
                                     [end] => 2
@@ -89,7 +88,7 @@ Array
                         (
                             [0] => Array
                                 (
-                                    [name] => String
+                                    [name] => Row
                                     [value] =>
                                     [start] => 2
                                     [end] => 3
@@ -101,7 +100,7 @@ Array
 
             [2] => Array
                 (
-                    [name] => String
+                    [name] => Row
                     [value] => world
                     [start] => 3
                     [end] => 8

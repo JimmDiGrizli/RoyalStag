@@ -3,7 +3,7 @@ use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\FirstOf;
 use GetSky\ParserExpressions\Rules\Sequence;
-use GetSky\ParserExpressions\Rules\String;
+use GetSky\ParserExpressions\Rules\Row;
 
 class FirstOfTest extends PHPUnit_Framework_TestCase
 {
@@ -60,7 +60,7 @@ class FirstOfTest extends PHPUnit_Framework_TestCase
             ->expects($this->exactly(5))
             ->method('setCursor');
 
-        $subrule = $this->getMockBuilder(String::class)
+        $subrule = $this->getMockBuilder(Row::class)
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -79,7 +79,7 @@ class FirstOfTest extends PHPUnit_Framework_TestCase
 
     public function providerRule()
     {
-        $string = $this->getMockBuilder(String::class)
+        $string = $this->getMockBuilder(Row::class)
             ->setMethods(null)
             ->disableOriginalConstructor()
             ->getMock();

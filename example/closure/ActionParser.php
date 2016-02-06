@@ -1,6 +1,6 @@
 <?php
 use GetSky\ParserExpressions\Rules\FirstOf;
-use GetSky\ParserExpressions\Rules\String;
+use GetSky\ParserExpressions\Rules\Row;
 
 class ActionParser
 {
@@ -13,9 +13,9 @@ class ActionParser
 
     public function foo()
     {
-        return new String(
+        return new Row(
             'foo',
-            'String',
+            'Row',
             function () {
                 $this->action = 'It\'s foo-action!';
             }
@@ -24,9 +24,9 @@ class ActionParser
 
     public function bar()
     {
-        return new String(
+        return new Row(
             'bar',
-            'String',
+            'Row',
             function () {
                 $this->action = 'It\'s bar-action!';
             }

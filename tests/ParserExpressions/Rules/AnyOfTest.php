@@ -2,8 +2,7 @@
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\AnyOf;
-use GetSky\ParserExpressions\Rules\FirstOf;
-use GetSky\ParserExpressions\Rules\String;
+use GetSky\ParserExpressions\Rules\Row;
 
 class AnyOfTest extends PHPUnit_Framework_TestCase
 {

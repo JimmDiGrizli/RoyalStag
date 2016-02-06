@@ -11,7 +11,7 @@ use GetSky\ParserExpressions\Rules\PredicateAnd;
 use GetSky\ParserExpressions\Rules\PredicateNot;
 use GetSky\ParserExpressions\Rules\Range;
 use GetSky\ParserExpressions\Rules\Sequence;
-use GetSky\ParserExpressions\Rules\String;
+use GetSky\ParserExpressions\Rules\Row;
 use GetSky\ParserExpressions\Rules\ZeroOrMore;
 
 /**
@@ -72,11 +72,11 @@ function Sequence(array $rules, $name = "Sequence", callable $action = null)
  * @param $string
  * @param string $name
  * @param callable $action
- * @return GetSky\ParserExpressions\Rules\String
+ * @return GetSky\ParserExpressions\Rules\Row
  */
-function String($string, $name = "String", callable $action = null)
+function Row($string, $name = "String", callable $action = null)
 {
-    return new String($string, $name, $action);
+    return new Row($string, $name, $action);
 }
 
 /**

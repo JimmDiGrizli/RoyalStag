@@ -11,7 +11,7 @@ use GetSky\ParserExpressions\Result;
 /**
  * It's rule that only succeeds if strings are equal.
  */
-class String extends AbstractRule
+class Row extends AbstractRule
 {
 
     /**
@@ -24,7 +24,7 @@ class String extends AbstractRule
      * @param callable $action
      * @param string|int $name
      */
-    public function __construct($rule, $name = "String", callable $action = null)
+    public function __construct($rule, $name = "Row", callable $action = null)
     {
         $this->rule = (string)$rule;
         $this->name = (string)$name;

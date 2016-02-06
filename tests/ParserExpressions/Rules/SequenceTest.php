@@ -2,7 +2,7 @@
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\Sequence;
-use GetSky\ParserExpressions\Rules\String;
+use GetSky\ParserExpressions\Rules\Row;
 
 class SequenceTest extends PHPUnit_Framework_TestCase
 {
@@ -58,7 +58,7 @@ class SequenceTest extends PHPUnit_Framework_TestCase
             ->expects($this->exactly(1))
             ->method('setCursor');
 
-        $subrule = $this->getMockBuilder(String::class)
+        $subrule = $this->getMockBuilder(Row::class)
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -77,7 +77,7 @@ class SequenceTest extends PHPUnit_Framework_TestCase
 
     public function providerRule()
     {
-        $string = $this->getMockBuilder(String::class)
+        $string = $this->getMockBuilder(Row::class)
             ->setMethods(null)
             ->disableOriginalConstructor()
             ->getMock();

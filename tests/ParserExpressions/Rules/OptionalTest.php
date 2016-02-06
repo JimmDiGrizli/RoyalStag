@@ -2,7 +2,7 @@
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\Rules\Optional;
-use GetSky\ParserExpressions\Rules\String;
+use GetSky\ParserExpressions\Rules\Row;
 
 class OptionalTest extends PHPUnit_Framework_TestCase
 {
@@ -17,7 +17,7 @@ class OptionalTest extends PHPUnit_Framework_TestCase
 
     public function testCreateZeroOrMore()
     {
-        $rule = $this->getMockBuilder(String::class)
+        $rule = $this->getMockBuilder(Row::class)
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -58,7 +58,7 @@ class OptionalTest extends PHPUnit_Framework_TestCase
             ->expects($this->exactly(2))
             ->method('setCursor');
 
-        $subrule = $this->getMockBuilder(String::class)
+        $subrule = $this->getMockBuilder(Row::class)
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();

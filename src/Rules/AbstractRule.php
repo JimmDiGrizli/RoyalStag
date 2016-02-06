@@ -64,6 +64,6 @@ abstract class AbstractRule implements RuleInterface
         if (is_array($rule)) {
             return new Sequence($rule);
         }
-        return new String($rule);
+        return new Row($rule);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 use GetSky\ParserExpressions\Rules\AbstractRule;
 use GetSky\ParserExpressions\Rules\Sequence;
-use GetSky\ParserExpressions\Rules\String;
+use GetSky\ParserExpressions\Rules\Row;
 
 class AbstractRuleTest extends PHPUnit_Framework_TestCase
 {
@@ -33,7 +33,7 @@ class AbstractRuleTest extends PHPUnit_Framework_TestCase
         $rule = $this->getObject();
 
         $string = $rule->toRule('String');
-        $this->assertInstanceOf(String::class, $string);
+        $this->assertInstanceOf(Row::class, $string);
 
         $sequence = $rule->toRule([$string, $string]);
         $this->assertInstanceOf(Sequence::class, $sequence);

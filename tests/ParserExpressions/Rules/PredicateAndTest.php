@@ -1,9 +1,9 @@
 <?php
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\Rule;
+use GetSky\ParserExpressions\RuleInterface;
 use GetSky\ParserExpressions\Rules\PredicateAnd;
-use GetSky\ParserExpressions\Rules\String;
+use GetSky\ParserExpressions\Rules\Row;
 
 class PredicateAndTest extends PHPUnit_Framework_TestCase
 {
@@ -18,7 +18,7 @@ class PredicateAndTest extends PHPUnit_Framework_TestCase
 
     public function testCreatePredicateAnd()
     {
-        $rule = $this->getMockBuilder(String::class)
+        $rule = $this->getMockBuilder(Row::class)
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -54,7 +54,7 @@ class PredicateAndTest extends PHPUnit_Framework_TestCase
             ->expects($this->exactly(3))
             ->method('setCursor');
 
-        $subrule = $this->getMockBuilder(Rule::class)
+        $subrule = $this->getMockBuilder(RuleInterface::class)
             ->setMethods(['scan'])
             ->disableOriginalConstructor()
             ->getMock();

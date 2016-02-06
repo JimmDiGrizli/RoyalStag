@@ -1,9 +1,9 @@
 <?php
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Result;
-use GetSky\ParserExpressions\Rules\String;
+use GetSky\ParserExpressions\Rules\Row;
 
-class StringTest extends PHPUnit_Framework_TestCase
+class RowTest extends PHPUnit_Framework_TestCase
 {
 
     public function testInterface()
@@ -19,9 +19,9 @@ class StringTest extends PHPUnit_Framework_TestCase
      */
     public function testCreateString($rule, $name, $action)
     {
-        $test = new String($rule, $name);
-        $attribute = $this->getAccessibleProperty(String::class, 'rule');
-        $fName = $this->getAccessibleProperty(String::class, 'name');
+        $test = new Row($rule, $name);
+        $attribute = $this->getAccessibleProperty(Row::class, 'rule');
+        $fName = $this->getAccessibleProperty(Row::class, 'name');
 
         $this->assertSame($rule, $attribute->getValue($test));
         $this->assertSame($name, $fName->getValue($test));
@@ -30,8 +30,8 @@ class StringTest extends PHPUnit_Framework_TestCase
     public function testScan()
     {
         $mock = $this->getObject();
-        $rule = $this->getAccessibleProperty(String::class, 'rule');
-        $action = $this->getAccessibleProperty(String::class, 'action');
+        $rule = $this->getAccessibleProperty(Row::class, 'rule');
+        $action = $this->getAccessibleProperty(Row::class, 'action');
         $action->setValue($mock, function () {
                 return true;
             });
@@ -42,6 +42,8 @@ class StringTest extends PHPUnit_Framework_TestCase
 
         $result
             ->expects($this->once())
+
+
             ->method('getValue')
             ->will($this->returnValue('My'));
 
@@ -89,7 +91,7 @@ class StringTest extends PHPUnit_Framework_TestCase
 
     private function getObject()
     {
-        return $this->getMockBuilder(String::class)
+        return $this->getMockBuilder(Row::class)
             ->setMethods(null)
             ->disableOriginalConstructor()
             ->getMock();
