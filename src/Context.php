@@ -4,6 +4,7 @@
  * @package GetSky\ParserExpressions
  */
 namespace GetSky\ParserExpressions;
+
 use Exception;
 
 /**
