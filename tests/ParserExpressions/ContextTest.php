@@ -30,11 +30,11 @@ class ContextText extends PHPUnit_Framework_TestCase
         $mock = $this->getObject();
         $string = $this->getAccessibleProperty(Context::class, 'string');
         $cursor = $this->getAccessibleProperty(Context::class, 'cursor');
-        $error = $this->getAccessibleProperty(Context::class, 'error');
+        $errors = $this->getAccessibleProperty(Context::class, 'errors');
 
         $string->setValue($mock, 'test');
         $cursor->setValue($mock, 2);
-        $error->setValue(
+        $errors->setValue(
             $mock,
             $this->getMockBuilder(Error::class)
             ->setMethods(null)
