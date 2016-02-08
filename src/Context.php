@@ -4,6 +4,7 @@
  * @package GetSky\ParserExpressions
  */
 namespace GetSky\ParserExpressions;
+use Exception;
 
 /**
  * It is a wrapper for parsing string.
@@ -21,14 +22,9 @@ class Context
     protected $cursor = 0;
 
     /**
-     * @var int This is the farthest character where the error occurred.
-     */
-    protected $maxErrorCursor;
-
-    /**
      * @var array The array of errors.
      */
-    protected $error = [];
+    protected $errors = [];
 
     /**
      * @var ErrorInterface Error handler.
@@ -55,8 +51,7 @@ class Context
     {
         $this->string = (string)$string;
         $this->cursor = 0;
-        $this->error = [];
-        $this->maxErrorCursor = null;
+        $this->errors = [];
     }
 
     /**
@@ -90,12 +85,12 @@ class Context
      * Sets a new value for the cursor.
      *
      * @param int $position
-     * @throws \Exception
+     * @throws Exception
      */
     public function setCursor($position)
     {
         if ($position < 0) {
-            throw new \Exception('The cursor can\'t be negative.');
+            throw new Exception('The cursor can\'t be negative.');
         }
         $this->cursor = $position;
     }
@@ -108,11 +103,7 @@ class Context
     {
         $error = clone $this->errorPrototype;
         $error->update($rule, $index);
-        $this->error[$index][] = [$error];
-
-        if ($this->maxErrorCursor < $index) {
-            $this->maxErrorCursor = $index;
-        }
+        $this->errors[$index][] = $error;
     }
 
     /**
@@ -120,7 +111,8 @@ class Context
      */
     public function getError()
     {
-        return $this->error[$this->maxErrorCursor];
+        ksort($this->errors);
+        return end($this->errors);
     }
 
     /**
@@ -128,6 +120,6 @@ class Context
      */
     public function getAllErrors()
     {
-        return $this->error;
+        return $this->errors;
     }
 }
