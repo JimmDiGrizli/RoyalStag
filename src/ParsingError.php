@@ -8,25 +8,26 @@ namespace GetSky\ParserExpressions;
 /**
  * It is a error result for parsing string.
  */
-class Error implements ErrorInterface
+class ParsingError implements ParsingErrorInterface
 {
 
     protected $rule;
 
     protected $index;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function update(RuleInterface $rule, $index)
+    public function __construct(RuleInterface $rule, $index)
     {
         $this->index = $index;
         $this->rule = $rule;
     }
 
-    public function __clone()
+    public function rule()
     {
-        $this->index = null;
-        $this->rule = null;
+        return $this->rule;
+    }
+
+    public function position()
+    {
+        return $this->index;
     }
 }

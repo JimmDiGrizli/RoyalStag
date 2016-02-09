@@ -23,23 +23,16 @@ class Context
     protected $cursor = 0;
 
     /**
-     * @var array The array of errors.
+     * @var ErrorCollectionInterface
      */
-    protected $errors = [];
+    protected $errors;
 
     /**
-     * @var ErrorInterface Error handler.
+     * @param ErrorCollectionInterface $errorCollection
      */
-    protected $errorPrototype;
-
-    /**
-     * @param ErrorInterface $errorPrototype
-     * @param string $string Parsing string
-     */
-    public function __construct(ErrorInterface $errorPrototype = null, $string = null)
+    public function __construct(ErrorCollectionInterface $errorCollection)
     {
-        $this->string = (string)$string;
-        $this->errorPrototype = $errorPrototype == null ? new Error() : $errorPrototype;
+        $this->errors = $errorCollection;
     }
 
     /**
@@ -52,7 +45,7 @@ class Context
     {
         $this->string = (string)$string;
         $this->cursor = 0;
-        $this->errors = [];
+        $this->errors->clear();
     }
 
     /**
@@ -102,25 +95,6 @@ class Context
      */
     public function error(RuleInterface $rule, $index)
     {
-        $error = clone $this->errorPrototype;
-        $error->update($rule, $index);
-        $this->errors[$index][] = $error;
-    }
-
-    /**
-     * @return ErrorInterface
-     */
-    public function getError()
-    {
-        ksort($this->errors);
-        return end($this->errors);
-    }
-
-    /**
-     * @return array
-     */
-    public function getAllErrors()
-    {
-        return $this->errors;
+        $this->errors->add($rule, $index);
     }
 }

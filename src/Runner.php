@@ -17,13 +17,15 @@ class Runner
     protected $rule;
 
     /**
-     * @param Context $context
      * @param RuleInterface $rule
+     * @param Context $context
+     * @param ErrorCollectionInterface $errors
      */
-    public function __construct(RuleInterface $rule, Context $context = null)
+    public function __construct(RuleInterface $rule, Context $context = null, ErrorCollectionInterface $errors = null)
     {
         $this->rule = $rule;
-        $this->context = $context == null ? new Context() : $context;
+        $this->errors = !$errors ? new ErrorCollection() : $errors;
+        $this->context = !$context ? new Context($this->errors) : $context;
     }
 
     /**
@@ -38,11 +40,12 @@ class Runner
     }
 
     /**
-     * @return bool|ErrorInterface
+     * @return bool|ParsingErrorInterface
      */
     public function hasError()
     {
-        if ($error = $this->context->getError()) {
+        $error = $this->errors->findMaxErrors();
+        if ($error) {
             return $error;
         }
 

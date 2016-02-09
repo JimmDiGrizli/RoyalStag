@@ -2,6 +2,7 @@
 
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\Error;
+use GetSky\ParserExpressions\ErrorCollectionInterface;
 use GetSky\ParserExpressions\ErrorInterface;
 
 class ContextText extends PHPUnit_Framework_TestCase
@@ -12,14 +13,14 @@ class ContextText extends PHPUnit_Framework_TestCase
      */
     public function testCreateContext($text)
     {
-        $error = $this->getMockBuilder(ErrorInterface::class)
+        $error = $this->getMockBuilder(ErrorCollectionInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $test = new Context($error, $text);
+        $test = new Context($error);
         $string = $this->getAccessibleProperty(Context::class, 'string');
 
-        $this->assertSame($text, $string->getValue($test));
+        $this->assertSame(null, $string->getValue($test));
     }
 
     /**
@@ -32,15 +33,15 @@ class ContextText extends PHPUnit_Framework_TestCase
         $cursor = $this->getAccessibleProperty(Context::class, 'cursor');
         $errors = $this->getAccessibleProperty(Context::class, 'errors');
 
-        $string->setValue($mock, 'test');
-        $cursor->setValue($mock, 2);
         $errors->setValue(
             $mock,
-            $this->getMockBuilder(Error::class)
-            ->setMethods(null)
-            ->disableOriginalConstructor()
-            ->getMock()
+            $this->getMockBuilder(ErrorCollectionInterface::class)
+                ->disableOriginalConstructor()
+                ->getMock()
         );
+        $string->setValue($mock, 'test');
+        $cursor->setValue($mock, 2);
+
         $mock->setString($text);
 
         $this->assertSame($text, $string->getValue($mock));
