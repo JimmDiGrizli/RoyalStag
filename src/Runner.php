@@ -11,10 +11,16 @@ class Runner
      * @var Context
      */
     protected $context;
+
     /**
      * @var RuleInterface
      */
     protected $rule;
+
+    /**
+     * @var ErrorCollectionInterface
+     */
+    protected $errors;
 
     /**
      * @param RuleInterface $rule
