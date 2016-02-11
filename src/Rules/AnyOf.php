@@ -31,8 +31,8 @@ class AnyOf extends AbstractRule
      */
     public function __construct($rule, $name = "AnyOf", callable $action = null)
     {
-        $this->rule = (string)$rule;
-        $this->name = (string)$name;
+        $this->rule = (string) $rule;
+        $this->name = (string) $name;
         $this->action = $action;
     }
 

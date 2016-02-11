@@ -31,9 +31,9 @@ class Range extends AbstractRule
      */
     public function __construct($left, $right, $name = "Range", callable $action = null)
     {
-        $this->left = (string)$left;
-        $this->right = (string)$right;
-        $this->name = (string)$name;
+        $this->left = (string) $left;
+        $this->right = (string) $right;
+        $this->name = (string) $name;
         $this->action = $action;
     }
 

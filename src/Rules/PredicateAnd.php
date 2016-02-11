@@ -27,7 +27,7 @@ class PredicateAnd extends AbstractRule
     public function __construct($rule, $name = "PredicateAnd")
     {
         $this->rule = $this->toRule($rule);
-        $this->name = (string)$name;
+        $this->name = (string) $name;
     }
 
     /**

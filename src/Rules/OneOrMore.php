@@ -28,7 +28,7 @@ class OneOrMore extends AbstractRule
     public function __construct($rule, $name = "OneOrMore", callable $action = null)
     {
         $this->rule = $this->toRule($rule);
-        $this->name = (string)$name;
+        $this->name = (string) $name;
         $this->action = $action;
     }
 

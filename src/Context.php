@@ -43,7 +43,7 @@ class Context
      */
     public function setString($string)
     {
-        $this->string = (string)$string;
+        $this->string = (string) $string;
         $this->cursor = 0;
         $this->errors->clear();
     }
@@ -59,7 +59,7 @@ class Context
         if ($this->cursor + $size > strlen($this->string)) {
             return false;
         }
-        $value = mb_substr($this->string, $this->cursor, $size, 'utf8');
+        $value = substr($this->string, $this->cursor, $size);
         $this->cursor += $size;
 
         return $value;

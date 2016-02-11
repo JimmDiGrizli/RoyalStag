@@ -28,7 +28,7 @@ class Optional extends AbstractRule
     public function __construct($rule, $name = "Optional", callable $action = null)
     {
         $this->rule = $this->toRule($rule);
-        $this->name = (string)$name;
+        $this->name = (string) $name;
         $this->action = $action;
     }
 

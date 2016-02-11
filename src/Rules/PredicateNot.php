@@ -26,7 +26,7 @@ class PredicateNot extends AbstractRule
     public function __construct($rule, $name = "PredicateNot")
     {
         $this->rule = $this->toRule($rule);
-        $this->name = (string)$name;
+        $this->name = (string) $name;
     }
 
     /**

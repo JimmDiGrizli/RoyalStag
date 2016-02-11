@@ -30,7 +30,7 @@ class ZeroOrMore extends AbstractRule
     public function __construct($rule, $name = "ZeroOrMore", callable $action = null)
     {
         $this->rule = $this->toRule($rule);
-        $this->name = (string)$name;
+        $this->name = (string) $name;
         $this->action = $action;
     }
 

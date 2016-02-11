@@ -37,7 +37,7 @@ class FirstOf extends AbstractRule
         foreach ($rules as $rule) {
             $this->rules[] = $this->toRule($rule);
         }
-        $this->name = (string)$name;
+        $this->name = (string) $name;
         $this->action = $action;
     }
 
