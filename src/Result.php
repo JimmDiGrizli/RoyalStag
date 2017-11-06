@@ -135,7 +135,7 @@ class Result implements \Iterator, ResultInterface
             'end' => $this->end,
         ];
 
-        if ($this->children) {
+        if (empty($this->children)) {
             foreach ($this->children as $rule) {
                 $array['children'][] = $rule->toArray();
             }
