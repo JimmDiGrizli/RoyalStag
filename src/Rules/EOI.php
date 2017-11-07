@@ -1,7 +1,6 @@
 <?php
 namespace GetSky\ParserExpressions\Rules;
 
-
 use GetSky\ParserExpressions\Context;
 use GetSky\ParserExpressions\RuleInterface;
 
