@@ -135,12 +135,66 @@ class Result implements \Iterator, ResultInterface
             'end' => $this->end,
         ];
 
-        if (empty($this->children)) {
+        if (!empty($this->children)) {
             foreach ($this->children as $rule) {
                 $array['children'][] = $rule->toArray();
             }
         }
 
         return $array;
+    }
+
+    /**
+     * Search for the first result by name.
+     *
+     * @param $ruleName
+     * @return Result|null
+     */
+    public function find($ruleName)
+    {
+        if (empty($this->children)) {
+            return null;
+        }
+
+        foreach ($this->children as $rule) {
+            if ($rule->getName() == $ruleName) {
+                return $rule;
+            }
+
+            $child = $rule->find($ruleName);
+            if ($child !== null) {
+                return $child;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Search results by name.
+     *
+     * @param $ruleName
+     * @return Result|null
+     */
+    public function findAll($ruleName)
+    {
+        if (empty($this->children)) {
+            return null;
+        }
+
+        $result = [];
+
+        foreach ($this->children as $rule) {
+            if ($rule->getName() == $ruleName) {
+                $result[] = $rule;
+            }
+
+            $child = $rule->findAll($ruleName);
+            if ($child !== null) {
+                $result = array_merge($result, $child);
+            }
+        }
+
+        return $result;
     }
 }
