@@ -56,7 +56,7 @@ class Sequence extends AbstractRule
         }
 
         $result->setValue($string, $index);
-        $this->action();
+        $this->action($result);
 
         return $result;
     }

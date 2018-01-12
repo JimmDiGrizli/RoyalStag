@@ -30,11 +30,11 @@ class Result implements \Iterator, ResultInterface
     /**
      * @var Result[]
      */
-    protected $children;
+    protected $children = [];
     /**
      * @var integer
      */
-    private $key;
+    private $key = 0;
 
     /**
      * @param string $name
@@ -135,10 +135,8 @@ class Result implements \Iterator, ResultInterface
             'end' => $this->end,
         ];
 
-        if (!empty($this->children)) {
-            foreach ($this->children as $rule) {
-                $array['children'][] = $rule->toArray();
-            }
+        foreach ($this->children as $rule) {
+            $array['children'][] = $rule->toArray();
         }
 
         return $array;
@@ -152,9 +150,6 @@ class Result implements \Iterator, ResultInterface
      */
     public function find($ruleName)
     {
-        if (empty($this->children)) {
-            return null;
-        }
 
         foreach ($this->children as $rule) {
             if ($rule->getName() == $ruleName) {
@@ -178,9 +173,6 @@ class Result implements \Iterator, ResultInterface
      */
     public function findAll($ruleName)
     {
-        if (empty($this->children)) {
-            return null;
-        }
 
         $result = [];
 

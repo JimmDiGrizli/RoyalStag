@@ -54,7 +54,7 @@ class FirstOf extends AbstractRule
                 $result = new Result($this->name);
                 $result->addChild($value);
                 $result->setValue($value->getValue(), $index);
-                $this->action();
+                $this->action($result);
 
                 return $result;
             }

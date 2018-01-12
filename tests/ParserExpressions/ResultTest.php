@@ -26,8 +26,7 @@ class ResultTest extends PHPUnit_Framework_TestCase
     public function testForeachResult($results)
     {
         $testResult = new Result('Root');
-        $this->assertSame(null, $testResult->current());
-        $this->assertSame(null, $testResult->key());
+        $this->assertSame(0, $testResult->key());
         $this->assertSame(false, $testResult->valid());
 
         foreach ($results as $result) {
@@ -97,9 +96,7 @@ class ResultTest extends PHPUnit_Framework_TestCase
         foreach ($results as $result) {
             $testResult->addChild($result);
         }
-        if ($founded === null) {
-            $this->assertSame(null, $testResult->findAll($find));
-        } else if ($founded === []) {
+        if ($founded === []) {
             $this->assertSame([], $testResult->findAll($find));
        } else {
             $this->assertSame([$results[$founded]], $testResult->findAll($find));
@@ -266,7 +263,7 @@ class ResultTest extends PHPUnit_Framework_TestCase
             [
                 [],
                 'FirstOf',
-                null
+                []
             ]
         ];
     }

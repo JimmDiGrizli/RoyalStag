@@ -53,7 +53,7 @@ class OneOrMore extends AbstractRule
 
         if ($firstIndex != $index) {
             $result->setValue($string, $firstIndex);
-            $this->action();
+            $this->action($result);
             return $result;
         }
 

@@ -48,7 +48,7 @@ class Optional extends AbstractRule
         $result = new Result($this->name);
         $result->setValue($value->getValue(), $index);
         $result->addChild($value);
-        $this->action();
+        $this->action($result);
 
         return $result;
     }

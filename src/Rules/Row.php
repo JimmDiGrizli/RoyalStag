@@ -49,7 +49,7 @@ class Row extends AbstractRule
 
         $result = new Result($this->name);
         $result->setValue($string, $index);
-        $this->action();
+        $this->action($result);
 
         return $result;
     }

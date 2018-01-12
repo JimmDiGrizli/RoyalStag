@@ -2,6 +2,7 @@
 namespace GetSky\ParserExpressions\Rules;
 
 use GetSky\ParserExpressions\Context;
+use GetSky\ParserExpressions\Result;
 use GetSky\ParserExpressions\RuleInterface;
 
 /**
@@ -35,13 +36,14 @@ abstract class AbstractRule implements RuleInterface
     /**
      * Launches action.
      *
+     * @param Result $result
      * @return void
      */
-    public function action()
+    public function action(Result $result = null)
     {
         if ($this->action !== null) {
             $action = $this->action;
-            $action();
+            $action($result);
         }
     }
 
