@@ -10,7 +10,7 @@ use GetSky\ParserExpressions\RuleInterface;
  * either case never consumes any input.
  *
  * @package GetSky\ParserExpressions\Rules
- * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @author  Alexander Getmanskii <alexander.get87@gmail.com>
  */
 class PredicateAnd extends AbstractRule
 {

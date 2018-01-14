@@ -11,7 +11,7 @@ use GetSky\ParserExpressions\Result;
  * then the sequence expression e1 e2 fails.
  *
  * @package GetSky\ParserExpressions\Rules
- * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @author  Alexander Getmanskii <alexander.get87@gmail.com>
  */
 class Sequence extends AbstractRule
 {

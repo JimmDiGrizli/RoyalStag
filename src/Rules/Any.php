@@ -9,7 +9,7 @@ use GetSky\ParserExpressions\RuleInterface;
  * It rule consumes any character in the string.
  *
  * @package GetSky\ParserExpressions\Rules
- * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @author  Alexander Getmanskii <alexander.get87@gmail.com>
  */
 class Any implements RuleInterface
 {

@@ -10,7 +10,7 @@ use GetSky\ParserExpressions\RuleInterface;
  * repetitions of their sub-expression e.
  *
  * @package GetSky\ParserExpressions\Rules
- * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @author  Alexander Getmanskii <alexander.get87@gmail.com>
  */
 class OneOrMore extends AbstractRule
 {

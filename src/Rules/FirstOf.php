@@ -12,7 +12,7 @@ use GetSky\ParserExpressions\Result;
  * instead, returning e2's result.
  *
  * @package GetSky\ParserExpressions\Rules
- * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @author  Alexander Getmanskii <alexander.get87@gmail.com>
  */
 class FirstOf extends AbstractRule
 {

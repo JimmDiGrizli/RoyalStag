@@ -1,7 +1,7 @@
 <?php
 /**
  * @package GetSky\ParserExpressions
- * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @author  Alexander Getmanskii <alexander.get87@gmail.com>
  */
 namespace GetSky\ParserExpressions;
 

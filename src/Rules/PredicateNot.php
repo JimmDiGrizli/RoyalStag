@@ -9,7 +9,7 @@ use GetSky\ParserExpressions\RuleInterface;
  * again consuming no input in either case.
  *
  * @package GetSky\ParserExpressions\Rules
- * @author  Alexander Getmansky <getmansk_y@yandex.ru>
+ * @author  Alexander Getmanskii <alexander.get87@gmail.com>
  */
 class PredicateNot extends AbstractRule
 {
