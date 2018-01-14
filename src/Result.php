@@ -179,11 +179,8 @@ class Result implements \Iterator, ResultInterface
         foreach ($this->children as $rule) {
             if ($rule->getName() == $ruleName) {
                 $result[] = $rule;
-            }
-
-            $child = $rule->findAll($ruleName);
-            if ($child !== null) {
-                $result = array_merge($result, $child);
+            } else {
+                $result = array_merge($result, $rule->findAll($ruleName));
             }
         }
 
