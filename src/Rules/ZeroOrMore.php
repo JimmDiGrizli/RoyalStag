@@ -43,6 +43,7 @@ class ZeroOrMore extends AbstractRule
         $string = '';
         $result = new Result($this->name);
 
+        $context->increaseDepth();
         while ($value = $this->rule->scan($context)) {
             if ($value instanceof Result) {
                 $result->addChild($value);
@@ -50,7 +51,7 @@ class ZeroOrMore extends AbstractRule
                 $index = $context->getCursor();
             }
         }
-
+        $context->decreaseDepth();
         $context->setCursor($index);
 
         if ($firstIndex != $index) {

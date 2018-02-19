@@ -13,8 +13,10 @@ interface ErrorCollectionInterface
      *
      * @param $rule RuleInterface
      * @param $index int
+     * @param int $depth
+     * @return void
      */
-    public function add(RuleInterface $rule, $index);
+    public function add(RuleInterface $rule, $index, $depth);
 
     /**
      * Find the most distant errors.

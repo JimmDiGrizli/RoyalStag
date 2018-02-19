@@ -15,10 +15,13 @@ class ParsingError implements ParsingErrorInterface
 
     protected $index;
 
-    public function __construct(RuleInterface $rule, $index)
+    private $depth;
+
+    public function __construct(RuleInterface $rule, $index, $depth)
     {
         $this->index = $index;
         $this->rule = $rule;
+        $this->depth = $depth;
     }
 
     public function rule()
@@ -29,5 +32,10 @@ class ParsingError implements ParsingErrorInterface
     public function position()
     {
         return $this->index;
+    }
+
+    public function depth()
+    {
+        return $this->depth;
     }
 }

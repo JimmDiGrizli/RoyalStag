@@ -40,6 +40,7 @@ class OneOrMore extends AbstractRule
         $firstIndex = $index = $context->getCursor();
         $string = '';
         $result = new Result($this->name);
+        $context->increaseDepth();
 
         while ($value = $this->rule->scan($context)) {
             if ($value instanceof Result) {
@@ -49,6 +50,7 @@ class OneOrMore extends AbstractRule
             }
         }
 
+        $context->decreaseDepth();
         $context->setCursor($index);
 
         if ($firstIndex != $index) {

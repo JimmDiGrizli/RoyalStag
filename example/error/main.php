@@ -13,3 +13,4 @@ $runner = new Runner($parser->time());
 $broken = $runner->run('10XX10');
 
 $error = $runner->hasError();
+var_dump($error);

@@ -44,6 +44,7 @@ class Sequence extends AbstractRule
         $string = '';
         $result = new Result($this->name);
 
+        $context->increaseDepth();
         foreach ($this->rules as $rule) {
             $value = $rule->scan($context);
             if ($value === false) {
@@ -54,7 +55,7 @@ class Sequence extends AbstractRule
                 $result->addChild($value);
             }
         }
-
+        $context->decreaseDepth();
         $result->setValue($string, $index);
         $this->action($result);
 

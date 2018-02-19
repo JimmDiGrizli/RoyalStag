@@ -47,6 +47,7 @@ class FirstOf extends AbstractRule
     public function scan(Context $context)
     {
         $index = $context->getCursor();
+        $context->increaseDepth();
 
         foreach ($this->rules as $rule) {
             $value = $rule->scan($context);
@@ -61,6 +62,7 @@ class FirstOf extends AbstractRule
             $context->setCursor($index);
         }
 
+        $context->decreaseDepth();
         $context->setCursor($index);
         $context->error($this, $index);
         return false;

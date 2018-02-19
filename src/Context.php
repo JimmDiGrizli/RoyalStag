@@ -23,6 +23,11 @@ class Context
     protected $cursor = 0;
 
     /**
+     * @var int The current depth of immersion in the rules tree.
+     */
+    protected $depth = 0;
+
+    /**
      * @var ErrorCollectionInterface
      */
     protected $errors;
@@ -39,12 +44,13 @@ class Context
      * Set new string and reset cursor.
      *
      * @param string $string
-     * @return string
+     * @return void
      */
     public function setString($string)
     {
         $this->string = (string) $string;
         $this->cursor = 0;
+        $this->depth = 0;
         $this->errors->clear();
     }
 
@@ -90,11 +96,34 @@ class Context
     }
 
     /**
+     * Increase the depth by one.
+     *
+     * @throws Exception
+     */
+    public function increaseDepth()
+    {
+        $this->depth++;
+    }
+
+    /**
+     * Decrease the depth by one.
+     *
+     * @throws Exception
+     */
+    public function decreaseDepth()
+    {
+        if ($this->depth == 0) {
+            throw new Exception('The depth can\'t be negative.');
+        }
+        $this->depth--;
+    }
+
+    /**
      * @param RuleInterface $rule
      * @param int $index
      */
     public function error(RuleInterface $rule, $index)
     {
-        $this->errors->add($rule, $index);
+        $this->errors->add($rule, $index, $this->depth);
     }
 }

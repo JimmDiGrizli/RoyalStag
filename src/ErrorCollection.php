@@ -18,9 +18,9 @@ class ErrorCollection implements ErrorCollectionInterface
     /**
      * {@inheritdoc}
      */
-    public function add(RuleInterface $rule, $index)
+    public function add(RuleInterface $rule, $index, $depth)
     {
-        $this->errors[$index][] = new ParsingError($rule, $index);
+        $this->errors[$depth][] = new ParsingError($rule, $index, $depth);
     }
 
     /**
@@ -29,7 +29,7 @@ class ErrorCollection implements ErrorCollectionInterface
     public function findMaxErrors()
     {
         ksort($this->errors);
-        return end($this->errors);
+        return reset($this->errors);
     }
 
     public function clear()

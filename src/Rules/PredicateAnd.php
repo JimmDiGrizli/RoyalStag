@@ -36,7 +36,9 @@ class PredicateAnd extends AbstractRule
     public function scan(Context $context)
     {
         $index = $context->getCursor();
+        $context->increaseDepth();
         $value = $this->rule->scan($context);
+        $context->decreaseDepth();
         $context->setCursor($index);
 
         if ($value === false) {
