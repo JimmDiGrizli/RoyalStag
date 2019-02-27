@@ -17,6 +17,7 @@ interface RuleInterface
      *
      * @param Context $context
      * @return Result|boolean
+     * @throws \Exception
      */
     public function scan(Context $context);
 }

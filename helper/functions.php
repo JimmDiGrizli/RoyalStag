@@ -139,13 +139,13 @@ function CharRange($left, $right, $name = "Range", callable $action = null)
  */
 function AnyOf($string, $name = "AnyOf")
 {
-    return new Range($string, $name);
+    return new AnyOf($string, $name);
 }
 
 /**
  * Syntactic sugar to create an object of class Any.
  *
- * @return PredicateNot
+ * @return Any
  */
 function Any()
 {

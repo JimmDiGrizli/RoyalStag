@@ -37,6 +37,7 @@ class Runner
     /**
      * @param string $string
      * @return bool|Result
+     * @throws \Exception
      */
     public function run($string)
     {
