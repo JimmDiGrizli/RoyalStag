@@ -45,7 +45,7 @@ class AnyOf extends AbstractRule
         $len = strlen($this->rule);
         $char = $context->value();
         for ($i = 0; $i < $len; ++$i) {
-            if ($char === $this->rule{$i}) {
+            if ($char === $this->rule[$i]) {
                 $result = new Result($this->name);
                 $result->setValue($char, $index);
                 $this->action($result);
