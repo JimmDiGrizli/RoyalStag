@@ -11,7 +11,7 @@ RoyalStag is a PHP library for parsing text realizes the strengths of parsing ex
 To integrate the library into your project, you will not have to spend a lot of time and effort. The open and flexible architecture easily integrates into any architectural solution, as there is no need for third-party tools to generate a parser. The only thing you have to do is add one line composer.json:
 
 ```
-"getsky/royal-stag": "0.9.*@dev"
+"getsky/royal-stag": "0.9.1@dev"
 ```
 
 
